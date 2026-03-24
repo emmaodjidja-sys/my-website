@@ -191,23 +191,13 @@ export function Hero() {
             style={reduced ? {} : { y: portraitY }}
             className="absolute inset-0"
           >
-            {/* SVG frame that draws on load */}
-            <motion.svg
-              className="absolute inset-[-4px] z-20 pointer-events-none"
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-            >
-              <motion.rect
-                x="0.5" y="0.5" width="99" height="99"
-                fill="none"
-                stroke="#c4653a"
-                strokeWidth="0.4"
-                strokeOpacity={0.6}
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ delay: 1.5, duration: 2, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </motion.svg>
+            {/* Animated border frame */}
+            <motion.div
+              className="absolute inset-[-5px] z-20 pointer-events-none border border-terra-500/50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            />
 
             <div className="portrait-frame duotone absolute inset-0">
               <Image
