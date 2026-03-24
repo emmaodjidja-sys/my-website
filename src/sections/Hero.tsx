@@ -211,7 +211,7 @@ export function Hero() {
 
             <div className="portrait-frame duotone absolute inset-0">
               <Image
-                src="/profile.jpg"
+                src="/profile.JPG"
                 alt="Emmanuel Nene Odjidja"
                 fill
                 className="object-cover object-top"

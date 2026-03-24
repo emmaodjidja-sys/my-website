@@ -55,7 +55,7 @@ export function About() {
             <div className="lg:sticky lg:top-28 max-lg:mb-8">
               <div className="portrait-editorial portrait-frame relative aspect-[3/4] w-full max-w-sm mx-auto lg:mx-0">
                 <Image
-                  src="/profile.jpg"
+                  src="/profile.JPG"
                   alt="Emmanuel Nene Odjidja"
                   fill
                   className="object-cover"
