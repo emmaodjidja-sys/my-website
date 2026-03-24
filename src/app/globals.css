@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════
+   THE MONOGRAPH — v2
+   Award-winning editorial design.
+   ═══════════════════════════════════════════════════════ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-ink-900 text-cream-200 font-sans;
+    cursor: default;
+  }
+
+  .light body {
+    @apply bg-cream-50 text-ink-800;
+  }
+
+  /* Terracotta selection */
+  ::selection {
+    background: #c4653a;
+    color: #f9f4eb;
+  }
+
+  :focus-visible {
+    outline: 2px solid #c4653a;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Minimal scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #3d3d4f; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: #c4653a; }
+}
+
+@layer components {
+  /* ── Film grain ── */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: -100%;
+    width: 300%;
+    height: 300%;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 8s steps(10) infinite;
+  }
+  .light .grain::after { opacity: 0.012; }
+
+  /* ── Progress bar ── */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #c4653a, #c9a84c);
+    z-index: 9998;
+    transform-origin: left;
+    will-change: transform;
+  }
+
+  /* ── Overline ── */
+  .overline {
+    @apply font-sans text-[0.6875rem] uppercase tracking-[0.2em] font-semibold text-terra-500;
+  }
+
+  /* ── Horizontal rule ── */
+  .hr {
+    @apply h-px bg-ink-800;
+  }
+  .light .hr {
+    @apply bg-cream-300;
+  }
+
+  /* ── Giant serif italic ── */
+  .editorial-quote {
+    font-family: var(--font-playfair);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Hover link arrow ── */
+  .arrow-link {
+    @apply inline-flex items-center gap-1.5 text-caption font-medium text-terra-500;
+  }
+  .arrow-link svg {
+    @apply transition-transform duration-300;
+  }
+  .group:hover .arrow-link svg,
+  .arrow-link:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* ── Magnetic hover on portrait ── */
+  .portrait-frame {
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(14,14,20,0.6) 100%);
+    pointer-events: none;
+  }
+  .light .portrait-frame::after {
+    background: linear-gradient(180deg, transparent 60%, rgba(254,252,248,0.4) 100%);
+  }
+
+  /* ── Duotone portrait ── */
+  .duotone {
+    position: relative;
+  }
+  .duotone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    mix-blend-mode: color;
+    background: linear-gradient(135deg, #1a1520 0%, #2a1a1a 100%);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  /* ── Grain overlay (matches body class) ── */
+  .grain-overlay::after {
+    content: '';
+    position: fixed;
+    inset: -100%;
+    width: 300%;
+    height: 300%;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 8s steps(10) infinite;
+  }
+  .light .grain-overlay::after { opacity: 0.012; }
+
+  /* ── Pull quote terra rule ── */
+  .pull-quote-rule {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .pull-quote-rule::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    bottom: 0.25em;
+    width: 3px;
+    background: #c4653a;
+  }
+
+  /* ── Toast notification ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9998;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Tooltip ── */
+  .tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  /* ── Hand-drawn portrait border ── */
+  .portrait-editorial {
+    position: relative;
+  }
+  .portrait-editorial::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1.5px solid #c4653a;
+    opacity: 0.5;
+    z-index: 1;
+    pointer-events: none;
+    clip-path: polygon(
+      0% 1%, 2% 0%, 98% 0.5%, 100% 2%,
+      99.5% 98%, 100% 100%, 1% 99.5%, 0% 97%
+    );
+  }
+}
