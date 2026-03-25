@@ -45,7 +45,7 @@ export function Contact() {
         {/* Closing statement */}
         <Reveal delay={0.05}>
           <h2 className="font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.03em] text-cream-50 max-w-4xl light:text-ink-900">
-            The best <span className="italic text-terra-500">evidence</span> is built in partnership.
+            If you're working on something that <span className="italic text-terra-500">matters</span>, let's talk.
           </h2>
         </Reveal>
 
@@ -145,7 +145,7 @@ export function Contact() {
                   disabled={status === 'sending'}
                   className="group inline-flex items-center gap-2.5 bg-terra-500 text-cream-50 px-7 py-4 text-[0.9rem] font-medium tracking-wide hover:bg-terra-600 transition-all duration-500 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {status === 'sending' ? 'Sending...' : 'Send Message'}
+                  {status === 'sending' ? 'Sending...' : 'Send'}
                   <svg className="transition-transform duration-300 group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </button>
               </form>

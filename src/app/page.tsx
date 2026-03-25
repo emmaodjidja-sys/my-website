@@ -1,5 +1,4 @@
 import { Header } from '@/components/Header'
-import { ReadingProgress } from '@/components/ReadingProgress'
 import { Footer } from '@/components/Footer'
 import { Hero } from '@/sections/Hero'
 import { About } from '@/sections/About'
@@ -38,7 +37,6 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ReadingProgress />
       <Header />
       <main>
         <Hero />

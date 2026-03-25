@@ -63,7 +63,7 @@ export function Writing() {
 
         {/* Pull quote */}
         <Reveal className="py-10 md:py-14">
-          <p className="editorial-quote text-[clamp(1.2rem,2.5vw,1.8rem)] text-cream-200/60 max-w-2xl light:text-ink-500/60">
+          <p className="editorial-quote pull-quote-rule text-[clamp(1.2rem,2.5vw,1.8rem)] text-cream-200 max-w-2xl light:text-ink-600">
             &ldquo;The most valuable evaluations are not necessarily the most methodologically sophisticated ones. They are the ones designed with enough pragmatism to survive first contact with the field.&rdquo;
           </p>
         </Reveal>
@@ -97,7 +97,7 @@ export function Writing() {
         {/* View all CTA */}
         <Reveal className="mt-12">
           <Link href="/writing" className="arrow-link">
-            View all writing
+            All writing
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
           </Link>
         </Reveal>

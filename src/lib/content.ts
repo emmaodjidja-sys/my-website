@@ -13,7 +13,7 @@ export const siteContent = {
   hero: {
     name: 'Emmanuel Nene Odjidja',
     titles: ['M&E Specialist', 'Researcher', 'Epidemiologist'] as const,
-    tagline: 'Better Evidence for Bettering Lives.',
+    tagline: 'I build evaluation systems in places where they\u2019re hardest to build.',
     stats: [
       { value: 12, suffix: '+', label: 'Years Experience' },
       { value: 29, suffix: '', label: 'Publications' },

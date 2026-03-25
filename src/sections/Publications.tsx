@@ -18,17 +18,9 @@ export function Publications() {
         {/* Header */}
         <div className="mb-16">
           <Reveal>
-            <p className="overline mb-6">Research</p>
-          </Reveal>
-          <Reveal delay={0.05}>
             <h2 className="font-serif text-[clamp(2.5rem,5.5vw,5rem)] font-bold leading-[0.95] tracking-[-0.03em] text-cream-50 light:text-ink-900">
               Publications
             </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-6 text-body text-ink-300 max-w-lg light:text-ink-600">
-              Peer-reviewed research spanning infectious disease, nutrition, maternal health, health systems, and the climate-conflict nexus.
-            </p>
           </Reveal>
         </div>
 
@@ -43,7 +35,7 @@ export function Publications() {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ delay: i * 0.03, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
               className="group block border-b border-ink-800/50 py-6 md:py-8 light:border-cream-300/50 hover:bg-terra-500/[0.03] transition-colors duration-300"
             >
               <div className="grid grid-cols-1 md:grid-cols-[80px_1fr_200px] gap-2 md:gap-8 items-start">
@@ -77,7 +69,7 @@ export function Publications() {
         {/* View all CTA */}
         <Reveal className="mt-12">
           <Link href="/publications" className="arrow-link">
-            View all 29+ publications
+            All publications
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
           </Link>
         </Reveal>

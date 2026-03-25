@@ -156,14 +156,14 @@ export function Hero() {
                 href="#publications"
                 className="group inline-flex items-center gap-2.5 bg-terra-500 text-cream-50 px-7 py-4 text-[0.9rem] font-medium tracking-wide hover:bg-terra-600 transition-all duration-500"
               >
-                View Research
+                Read the Research
                 <svg className="transition-transform duration-300 group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </a>
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 text-[0.9rem] text-ink-300 hover:text-terra-500 transition-colors duration-300 font-medium light:text-ink-600"
               >
-                Get in Touch
+                Write to Me
                 <span className="w-8 h-px bg-current" />
               </a>
             </motion.div>
