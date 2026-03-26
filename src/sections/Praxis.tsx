@@ -73,7 +73,7 @@ export function Praxis() {
             <div className="border-t-2 border-gold-500/40 pt-8">
               <p className="text-[0.65rem] uppercase tracking-[0.18em] font-semibold text-gold-500/70 mb-4">Early Warning</p>
               <h3 className="font-serif text-[clamp(1.3rem,2.5vw,1.8rem)] font-semibold leading-tight text-cream-100 light:text-ink-800 mb-5">
-                Conflict prediction in the Sahel
+                Conflict prediction
               </h3>
               <p className="text-body text-ink-300 light:text-ink-600 mb-4">
                 Econometric research using ACLED geocoded conflict data to predict violent extremism escalation. A stacked event study design shows that kidnapping spikes predict subsequent VE surges in Burkina Faso, Mali, and Niger, with spatial spillover at 50km and 100km radii. The platform translates these signals into actionable alerts.

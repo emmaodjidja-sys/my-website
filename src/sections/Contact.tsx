@@ -45,7 +45,7 @@ export function Contact() {
         {/* Closing statement */}
         <Reveal delay={0.05}>
           <h2 className="font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.03em] text-cream-50 max-w-4xl light:text-ink-900">
-            If you're working on something that <span className="italic text-terra-500">matters</span>, let's talk.
+            Let's <span className="italic text-terra-500">talk</span>.
           </h2>
         </Reveal>
 
