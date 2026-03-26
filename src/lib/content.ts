@@ -2,7 +2,6 @@ import type {
   ExpertiseTag,
   ExperienceEntry,
   MapCountry,
-  PraxisBeat,
   Publication,
   WritingPiece,
   SocialLink,
@@ -119,44 +118,9 @@ export const siteContent = {
     // https://scholar.google.co.uk/citations?user=jIiNtLYAAAAJ&hl=en
   ] satisfies Publication[],
 
-  praxisBeats: [
-    {
-      id: 'problem',
-      heading: 'The Challenge',
-      content: 'Evaluation in fragile and conflict-affected settings demands methodological rigour under conditions that make rigour difficult. Yet the tools available to evaluators have barely changed in decades. PRAXIS exists to close that gap, bringing artificial intelligence into the service of better evidence.',
-    },
-    {
-      id: 'approach',
-      heading: 'The Approach',
-      content: 'PRAXIS builds open-source AI tools that encode twelve years of field evaluation experience into systems any researcher or practitioner can use. By combining large language models with validated evaluation frameworks, the lab is making methodological expertise accessible to organisations that have never had the budget to hire specialist evaluators.',
-      capabilities: [
-        'AI-assisted evaluation design spanning 20+ methodological approaches',
-        'Automated framework selection adapted for fragile and conflict-affected contexts',
-        'Open-source tools that democratise access to evaluation expertise',
-        'Field-tested methods bridging the gap between academic rigour and operational reality',
-      ],
-    },
-    {
-      id: 'practice',
-      heading: 'In Practice',
-      content: 'When an organisation needed to evaluate a countering violent extremism programme across three Sahelian countries, PRAXIS tools guided the selection of a contribution analysis framework, identified context-appropriate indicators, and structured a mixed methods design that balanced the need for causal evidence with the realities of operating in insecure environments.',
-      chart: {
-        dimensions: ['Relevance', 'Coherence', 'Effectiveness', 'Sustainability'],
-        before: [2.1, 1.8, 1.5, 1.2],
-        after: [4.3, 3.8, 4.1, 3.6],
-      },
-    },
-    {
-      id: 'result',
-      heading: 'The Result',
-      content: 'Organisations using PRAXIS tools report faster evaluation design cycles while maintaining the methodological consistency required for credible evidence across multi-country programmes.',
-      stat: { value: 40, suffix: '%', label: 'reduction in evaluation design time' },
-    },
-  ] satisfies PraxisBeat[],
-
   praxis: {
     title: 'PRAXIS',
-    subtitle: 'An AI for Good lab pioneering the use of artificial intelligence in programme evaluation and development research.',
+    subtitle: 'An AI for Good lab with two research tracks: programme evaluation infrastructure and conflict early warning.',
     url: 'https://www.emmanuelneneodjidja.org/praxis',
     github: 'https://github.com/emmaodjidja-sys/praxis',
   },

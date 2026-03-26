@@ -1,62 +1,14 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { siteContent } from '@/lib/content'
 import { Reveal } from '@/components/Reveal'
-import { PraxisChart } from '@/components/PraxisChart'
 
-const { praxisBeats, praxis } = siteContent
-
-function AnimatedResultStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [count, setCount] = useState(0)
-  const [triggered, setTriggered] = useState(false)
-
-  useEffect(() => {
-    if (!ref.current) return
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting && !triggered) setTriggered(true) },
-      { threshold: 0.5 }
-    )
-    observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [triggered])
-
-  useEffect(() => {
-    if (!triggered) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setCount(value)
-      return
-    }
-    let frame: number
-    const start = performance.now()
-    const duration = 2000
-    const animate = (now: number) => {
-      const elapsed = now - start
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 4)
-      setCount(Math.floor(eased * value))
-      if (progress < 1) frame = requestAnimationFrame(animate)
-    }
-    frame = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(frame)
-  }, [triggered, value])
-
-  return (
-    <div ref={ref}>
-      <span className="block font-serif text-[clamp(3rem,8vw,7rem)] font-bold leading-none tracking-tight text-terra-500">
-        {count}<span>{suffix}</span>
-      </span>
-      <p className="mt-4 text-body text-ink-300 light:text-ink-600">{label}</p>
-    </div>
-  )
-}
+const { praxis } = siteContent
 
 export function Praxis() {
   const ref = useRef<HTMLElement>(null)
-  const chartRef = useRef<HTMLDivElement>(null)
-  const chartInView = useInView(chartRef, { once: true, margin: '-80px' })
   const reduced = useReducedMotion()
 
   const { scrollYProgress } = useScroll({
@@ -64,11 +16,6 @@ export function Praxis() {
     offset: ['start end', 'end start'],
   })
   const bgY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%'])
-
-  const problemBeat = praxisBeats.find(b => b.id === 'problem')!
-  const approachBeat = praxisBeats.find(b => b.id === 'approach')!
-  const practiceBeat = praxisBeats.find(b => b.id === 'practice')!
-  const resultBeat = praxisBeats.find(b => b.id === 'result')!
 
   return (
     <section ref={ref} id="praxis" className="relative py-32 md:py-44 overflow-hidden">
@@ -97,61 +44,52 @@ export function Praxis() {
           </p>
         </Reveal>
 
-        {/* Beat 1: The Problem */}
-        <Reveal delay={0.15} className="mt-24 md:mt-32">
-          <h3 className="overline mb-6">{problemBeat.heading}</h3>
-          <p className="font-serif text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.3] text-cream-100 max-w-3xl light:text-ink-800">
-            {problemBeat.content}
-          </p>
-        </Reveal>
-
-        {/* Beat 2: The Approach */}
-        <Reveal className="mt-20 md:mt-28">
-          <h3 className="overline mb-6">{approachBeat.heading}</h3>
-          <p className="text-body text-ink-300 max-w-2xl mb-8 light:text-ink-600">
-            {approachBeat.content}
-          </p>
-          {approachBeat.capabilities && (
-            <div className="space-y-3 max-w-2xl">
-              {approachBeat.capabilities.map((cap) => (
-                <p key={cap} className="text-body-sm text-ink-300 pl-6 relative light:text-ink-600">
-                  <span className="absolute left-0 text-terra-500 font-medium">&mdash;</span>
-                  {cap}
-                </p>
-              ))}
+        {/* Two tracks */}
+        <div className="mt-20 md:mt-28 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+          {/* Evaluation track */}
+          <Reveal>
+            <div className="border-t-2 border-terra-500/40 pt-8">
+              <p className="text-[0.65rem] uppercase tracking-[0.18em] font-semibold text-terra-500/70 mb-4">Evaluation</p>
+              <h3 className="font-serif text-[clamp(1.3rem,2.5vw,1.8rem)] font-semibold leading-tight text-cream-100 light:text-ink-800 mb-5">
+                Programme evaluation infrastructure
+              </h3>
+              <p className="text-body text-ink-300 light:text-ink-600 mb-4">
+                Twelve years of field evaluation experience encoded into free, open-source browser tools. Six live tools covering 298 indicators across 11 sectors. Sample size calculation, evaluation design advising, data exploration, and more. Everything runs on your machine with zero data transmission.
+              </p>
+              <a
+                href={praxis.url + '/evaluation/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="arrow-link mt-2 inline-flex"
+              >
+                Open the toolkit
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+              </a>
             </div>
-          )}
-        </Reveal>
+          </Reveal>
 
-        {/* Beat 3: In Practice */}
-        <Reveal className="mt-20 md:mt-28">
-          <h3 className="overline mb-6">{practiceBeat.heading}</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            <p className="text-body text-ink-300 light:text-ink-600">
-              {practiceBeat.content}
-            </p>
-            <div ref={chartRef}>
-              {practiceBeat.chart && (
-                <PraxisChart data={practiceBeat.chart} inView={chartInView} />
-              )}
+          {/* EWS track */}
+          <Reveal delay={0.1}>
+            <div className="border-t-2 border-gold-500/40 pt-8">
+              <p className="text-[0.65rem] uppercase tracking-[0.18em] font-semibold text-gold-500/70 mb-4">Early Warning</p>
+              <h3 className="font-serif text-[clamp(1.3rem,2.5vw,1.8rem)] font-semibold leading-tight text-cream-100 light:text-ink-800 mb-5">
+                Conflict prediction in the Sahel
+              </h3>
+              <p className="text-body text-ink-300 light:text-ink-600 mb-4">
+                Econometric research using ACLED geocoded conflict data to predict violent extremism escalation. A stacked event study design shows that kidnapping spikes predict subsequent VE surges in Burkina Faso, Mali, and Niger, with spatial spillover at 50km and 100km radii. The platform translates these signals into actionable alerts.
+              </p>
+              <a
+                href={praxis.url + '/ews/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="arrow-link mt-2 inline-flex"
+              >
+                PRAXIS EWS
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+              </a>
             </div>
-          </div>
-        </Reveal>
-
-        {/* Beat 4: The Result */}
-        <Reveal className="mt-20 md:mt-28">
-          <h3 className="overline mb-8">{resultBeat.heading}</h3>
-          {resultBeat.stat && (
-            <AnimatedResultStat
-              value={resultBeat.stat.value}
-              suffix={resultBeat.stat.suffix}
-              label={resultBeat.stat.label}
-            />
-          )}
-          <p className="mt-6 text-body text-ink-300 max-w-xl light:text-ink-600">
-            {resultBeat.content}
-          </p>
-        </Reveal>
+          </Reveal>
+        </div>
 
         {/* CTAs */}
         <Reveal className="mt-16 md:mt-20">
