@@ -1,52 +1,37 @@
 """Generate the Open Graph card for emmanuelneneodjidja.org.
 
-Renders a 1200x630 PNG using the site's editorial palette: dark navy ground
-with cream typography and a single terracotta accent on the family name. Run
-on demand; commit the output at public/og-image.png.
+Renders a 1200x630 PNG in the e-flux dialect: off-white ground, Helvetica
+only, single kuntunkuni triangle as the signature mark. Mirrors the
+homepage chrome (marquee, nameplate, leader). Run on demand; commit the
+output at public/og-image.png.
 """
 
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 W, H = 1200, 630
 
-# Palette matched to tailwind.config.ts
-INK_950 = (14, 14, 20)
-INK_900 = (22, 22, 29)
-INK_VIGNETTE = (31, 21, 32)
-CREAM_50 = (254, 252, 248)
-CREAM_300 = (228, 216, 194)
-TERRA_500 = (196, 101, 58)
-INK_400 = (107, 107, 133)
+# E-flux palette
+BG = (250, 250, 246)         # #fafaf6
+INK = (12, 12, 20)           # #0c0c14
+INK_2 = (38, 38, 48)         # #262630
+INK_3 = (106, 106, 120)      # #6a6a78
+INK_4 = (156, 156, 170)      # #9c9caa
+RULE = (226, 226, 220)       # #e2e2dc
+SIGNATURE = (110, 24, 24)    # #6E1818 kuntunkuni
 
 FONT_DIR = Path("C:/Windows/Fonts")
-SERIF_BOLD = ImageFont.truetype(str(FONT_DIR / "georgiab.ttf"), 130)
-SERIF_BOLD_SMALL = ImageFont.truetype(str(FONT_DIR / "georgiab.ttf"), 38)
-SERIF_REG = ImageFont.truetype(str(FONT_DIR / "georgia.ttf"), 28)
-SANS_BOLD = ImageFont.truetype(str(FONT_DIR / "arialbd.ttf"), 18)
-SANS_REG = ImageFont.truetype(str(FONT_DIR / "arial.ttf"), 22)
-
-
-def radial_vignette() -> Image.Image:
-    """Subtle ellipse at top-center fading to deep ink — matches hero bg."""
-    base = Image.new("RGB", (W, H), INK_950)
-    overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(overlay)
-    cx, cy = W // 2, -60
-    rx, ry = int(W * 0.55), int(H * 0.85)
-    for i in range(160, 0, -2):
-        alpha = int(110 * (i / 160) ** 1.6)
-        draw.ellipse(
-            (cx - rx * i / 160, cy - ry * i / 160, cx + rx * i / 160, cy + ry * i / 160),
-            fill=INK_VIGNETTE + (alpha,),
-        )
-    overlay = overlay.filter(ImageFilter.GaussianBlur(40))
-    base.paste(overlay, (0, 0), overlay)
-    return base
+HELV_BOLD_XL = ImageFont.truetype(str(FONT_DIR / "arialbd.ttf"), 70)
+HELV_BOLD_LG = ImageFont.truetype(str(FONT_DIR / "arialbd.ttf"), 46)
+HELV_BOLD_MD = ImageFont.truetype(str(FONT_DIR / "arialbd.ttf"), 30)
+HELV_BOLD_SM = ImageFont.truetype(str(FONT_DIR / "arialbd.ttf"), 22)
+HELV_BOLD_XS = ImageFont.truetype(str(FONT_DIR / "arialbd.ttf"), 18)
+HELV_REG_LG = ImageFont.truetype(str(FONT_DIR / "arial.ttf"), 26)
+HELV_REG = ImageFont.truetype(str(FONT_DIR / "arial.ttf"), 20)
 
 
 def render_tracking(draw, text, xy, font, fill, tracking_px):
-    """Draw text with manual letter-spacing (PIL has no built-in)."""
+    """Draw text with manual letter-spacing."""
     x, y = xy
     for ch in text:
         draw.text((x, y), ch, font=font, fill=fill)
@@ -55,29 +40,57 @@ def render_tracking(draw, text, xy, font, fill, tracking_px):
 
 
 def main():
-    img = radial_vignette()
+    img = Image.new("RGB", (W, H), BG)
     draw = ImageDraw.Draw(img)
 
+    # ------------ MARQUEE STRIP (top, 56 px) ------------
+    draw.rectangle((0, 0, W, 56), fill=(255, 255, 255))
+    draw.line((0, 56, W, 56), fill=INK, width=1)
+    # Kuntunkuni signature triangle (single use on the card)
+    draw.polygon([(48, 18), (48, 38), (66, 28)], fill=SIGNATURE)
+    # Marquee text (truncated for OG)
+    render_tracking(draw, "NOW", (84, 22), HELV_BOLD_XS, INK, 1)
+    draw.text((128, 22), "·  PRAXIS v1.0 launches at Glocal Evaluation Week, 3 June 2026",
+              font=HELV_REG, fill=INK_2)
+    # Issue marker right
+    issue = "NO. 04  ·  MAY 2026"
+    issue_bbox = draw.textbbox((0, 0), issue, font=HELV_BOLD_XS)
+    iw = issue_bbox[2] - issue_bbox[0]
+    render_tracking(draw, issue, (W - iw - 48 - 8 * len(issue), 22), HELV_BOLD_XS, INK_3, 1)
+
+    # ------------ NAMEPLATE (under marquee) ------------
+    np_y = 76
+    np_h = 64
+    draw.line((0, np_y + np_h, W, np_y + np_h), fill=INK, width=1)
+    brand = "Emmanuel Nene Odjidja"
+    brand_bbox = draw.textbbox((0, 0), brand, font=HELV_BOLD_MD)
+    bw = brand_bbox[2] - brand_bbox[0]
+    draw.text(((W - bw) // 2, np_y + 16), brand, font=HELV_BOLD_MD, fill=INK)
+
+    # ------------ LEADER H1 (centered area) ------------
+    leader_y = 188
     pad_x = 80
+    # Render across multiple lines manually for control
+    h1_lines = [
+        "Monitoring and evaluation",
+        "in fragile and",
+        "conflict-affected settings.",
+    ]
+    line_h = 84
+    for i, line in enumerate(h1_lines):
+        draw.text((pad_x, leader_y + i * line_h), line, font=HELV_BOLD_XL, fill=INK)
 
-    # Eyebrow — uppercase, wide tracking, terra
-    eyebrow = "M&E SPECIALIST  ·  RESEARCHER  ·  EPIDEMIOLOGIST"
-    render_tracking(draw, eyebrow, (pad_x, 90), SANS_BOLD, TERRA_500, 4)
-
-    # Name — three stacked lines, last one in terra
-    name_y = 150
-    line_h = 122
-    draw.text((pad_x, name_y), "Emmanuel", font=SERIF_BOLD, fill=CREAM_50)
-    draw.text((pad_x, name_y + line_h), "Nene", font=SERIF_BOLD, fill=CREAM_50)
-    draw.text((pad_x, name_y + line_h * 2), "Odjidja", font=SERIF_BOLD, fill=TERRA_500)
-
-    # Terra rule under name — matches the underline on the site
-    rule_y = name_y + line_h * 3 + 12
-    draw.rectangle((pad_x, rule_y, pad_x + 220, rule_y + 3), fill=TERRA_500)
-
-    # Tagline — bottom-left, cream. Sole metadata line; no metric stamp.
-    tagline = "I build evaluation systems in places where they're hardest to build."
-    draw.text((pad_x, H - 92), tagline, font=SERIF_REG, fill=CREAM_300)
+    # ------------ BOTTOM STRIP ------------
+    bot_y = H - 76
+    draw.line((0, bot_y, W, bot_y), fill=RULE, width=1)
+    # Subtitle: tracked uppercase
+    sub = "M&E SPECIALIST  ·  RESEARCHER  ·  EPIDEMIOLOGIST"
+    render_tracking(draw, sub, (pad_x, bot_y + 22), HELV_BOLD_SM, INK_3, 2)
+    # Site URL right
+    url_text = "emmanuelneneodjidja.org"
+    url_bbox = draw.textbbox((0, 0), url_text, font=HELV_REG_LG)
+    uw = url_bbox[2] - url_bbox[0]
+    draw.text((W - uw - pad_x, bot_y + 24), url_text, font=HELV_REG_LG, fill=INK)
 
     out = Path("public/og-image.png")
     out.parent.mkdir(parents=True, exist_ok=True)
