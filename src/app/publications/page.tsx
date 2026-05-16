@@ -1,4 +1,9 @@
 import type { Metadata } from 'next'
+import { siteContent } from '@/lib/content'
+import { Marquee } from '@/components/Marquee'
+import { Nameplate } from '@/components/Nameplate'
+import { Nav } from '@/components/Nav'
+import { Colophon } from '@/components/Colophon'
 import { PublicationsClient } from './PublicationsClient'
 
 export const metadata: Metadata = {
@@ -7,5 +12,15 @@ export const metadata: Metadata = {
 }
 
 export default function PublicationsPage() {
-  return <PublicationsClient />
+  return (
+    <>
+      <Marquee items={siteContent.marquee} />
+      <Nameplate issue="No. 04 · May 2026" />
+      <Nav current="Publications" />
+      <main id="main">
+        <PublicationsClient />
+      </main>
+      <Colophon />
+    </>
+  )
 }
