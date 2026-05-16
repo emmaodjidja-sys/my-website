@@ -4,7 +4,6 @@ import { useState, useMemo, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { siteContent } from '@/lib/content'
-import { ThemeToggle } from '@/components/ThemeToggle'
 import { Pagination } from '@/components/Pagination'
 import { Toast } from '@/components/Toast'
 import type { Publication } from '@/lib/types'
@@ -76,7 +75,6 @@ export function PublicationsClient() {
             Back
           </Link>
           <h1 className="font-serif text-[1rem] font-semibold text-cream-100 light:text-ink-800">Publications</h1>
-          <ThemeToggle />
         </div>
       </header>
 

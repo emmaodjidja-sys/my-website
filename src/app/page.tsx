@@ -1,27 +1,34 @@
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
-import { Hero } from '@/sections/Hero'
-import { About } from '@/sections/About'
-import { Experience } from '@/sections/Experience'
+import { siteContent } from '@/lib/content'
+import { Marquee } from '@/components/Marquee'
+import { Nameplate } from '@/components/Nameplate'
+import { Nav } from '@/components/Nav'
+import { Colophon } from '@/components/Colophon'
+import { Leader } from '@/sections/Leader'
+import { EditorsNote } from '@/sections/EditorsNote'
+import { Research } from '@/sections/Research'
 import { Publications } from '@/sections/Publications'
-import { Praxis } from '@/sections/Praxis'
 import { Writing } from '@/sections/Writing'
+import { Praxis } from '@/sections/Praxis'
+import { Experience } from '@/sections/Experience'
 import { Contact } from '@/sections/Contact'
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <Marquee items={siteContent.marquee} />
+      <Nameplate issue="No. 04 · May 2026" />
+      <Nav current="Index" />
       <main id="main">
-        <Hero />
-        <About />
-        <Experience />
+        <Leader />
+        <EditorsNote />
+        <Research />
         <Publications />
-        <Praxis />
         <Writing />
+        <Praxis />
+        <Experience />
         <Contact />
       </main>
-      <Footer />
+      <Colophon />
     </>
   )
 }

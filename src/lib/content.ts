@@ -1,63 +1,14 @@
 import type {
-  ExpertiseTag,
   ExperienceEntry,
-  MapCountry,
   Publication,
   WritingPiece,
   SocialLink,
-  ClosingStatement,
   ResearchItem,
   EditorsNote,
   MarqueeItem,
 } from './types'
 
 export const siteContent = {
-  hero: {
-    name: 'Emmanuel Nene Odjidja',
-    titles: ['M&E Specialist', 'Researcher', 'Epidemiologist'] as const,
-    tagline: 'I build evaluation systems in places where they are hardest to build.',
-    stats: [
-      { value: 12, suffix: '+', label: 'Years Experience' },
-      { value: 29, suffix: '', label: 'Publications' },
-      { value: 6, suffix: '+', label: 'Countries' },
-    ] as const,
-  },
-
-  about: {
-    bio: [
-      'If a programme works, it should be proven using sound evidence, not anecdotes. That conviction is the through-line of twelve years of work across South Sudan, Burundi, Ghana, the Sahel, Tunisia, and Sri Lanka, testing methods where they are likeliest to fail.',
-      'I design evaluations around a stubborn principle: when conditions on the ground refuse to cooperate with the plan, the design has to be flexible enough to produce evidence anyway. In practice that means difference-in-differences, propensity score matching, event-study designs, and mixed methods, chosen for what the setting can support rather than what looks rigorous on paper. Twenty-nine peer-reviewed articles to date.',
-      'I am Ghanaian, work across English and French. I read epidemiology at Queen Margaret University in Edinburgh; I currently lead M&E research, design, and learning at GCERF, and edit the case-based evaluations section of the Journal of MultiDisciplinary Evaluation.',
-      'Outside the work: half-marathons. The full marathon remains theoretically appealing.',
-    ] as const,
-    pullQuote: 'The most valuable evaluations are not necessarily the most methodologically sophisticated. They are the ones designed with enough pragmatism to survive first contact with the field.',
-    pullQuoteCite: 'On evidence in fragile settings, 2025',
-    education: 'MSc Global Health (Distinction), Queen Margaret University, Edinburgh',
-    languages: ['English (Native)', 'French (Full Professional)'] as const,
-    expertise: [
-      { label: 'Impact Evaluation', tooltip: 'Quasi-experimental and experimental designs for causal inference' },
-      { label: 'Epidemiology', tooltip: 'Disease surveillance, outbreak investigation, and population health' },
-      { label: 'Programme Evaluation', tooltip: 'Formative, summative, and developmental evaluation' },
-      { label: 'Mixed Methods', tooltip: 'Integrating quantitative rigour with qualitative depth' },
-      { label: 'Health Systems', tooltip: 'Service delivery, financing, and governance analysis' },
-      { label: 'M&E Design', tooltip: 'Monitoring and evaluation framework development' },
-      { label: 'Stata/R', tooltip: 'Statistical analysis and data visualization' },
-      { label: 'DiD', tooltip: 'Difference-in-Differences impact estimation' },
-      { label: 'PSM', tooltip: 'Propensity Score Matching for causal inference' },
-      { label: 'RCT', tooltip: 'Randomized Controlled Trials design and analysis' },
-    ] satisfies ExpertiseTag[],
-    mapCountries: [
-      { name: 'Ghana', ids: ['GHA'], opacity: 1.0, labelPosition: { x: 2, y: 12 } },
-      { name: 'South Sudan', ids: ['SSD'], opacity: 0.8, labelPosition: { x: 35, y: 12 } },
-      { name: 'Burundi', ids: ['BDI'], opacity: 0.7, labelPosition: { x: 33, y: 18 } },
-      { name: 'Burkina Faso', ids: ['BFA'], opacity: 0.6, labelPosition: { x: 0, y: 6 } },
-      { name: 'Mali', ids: ['MLI'], opacity: 0.6, labelPosition: { x: -3, y: 3 } },
-      { name: 'Niger', ids: ['NER'], opacity: 0.6, labelPosition: { x: 12, y: 3 } },
-      { name: 'Tunisia', ids: ['TUN'], opacity: 0.5, labelPosition: { x: 12, y: -8 } },
-      { name: 'Sri Lanka', ids: ['LKA'], opacity: 0.4, labelPosition: { x: 82, y: 12 } },
-    ] satisfies MapCountry[],
-  },
-
   experience: [
     {
       period: '2021 to Present',
@@ -321,21 +272,12 @@ export const siteContent = {
 
   contact: {
     email: 'praxisai.labs@gmail.com',
-    closingStatement: {
-      line1: 'The best evidence is built in partnership.',
-      line2: 'If you are exploring a research collaboration, designing an evaluation framework, or rethinking how evidence shapes policy, I would welcome the conversation.',
-    } satisfies ClosingStatement,
     socials: [
-      { platform: 'LinkedIn', descriptor: 'Professional network', url: 'https://www.linkedin.com/in/emmanuel-odjidja/' },
-      { platform: 'Google Scholar', descriptor: 'Research profile', url: 'https://scholar.google.co.uk/citations?user=jIiNtLYAAAAJ&hl=en' },
-      { platform: 'ORCID', descriptor: 'Author identifier', url: 'https://orcid.org/0000-0002-7858-9011' },
-      { platform: 'ResearchGate', descriptor: 'Academic community', url: 'https://www.researchgate.net/profile/Emmanuel_Odjidja' },
-      { platform: 'GitHub', descriptor: 'Open source work', url: 'https://github.com/emmaodjidja-sys' },
+      { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/emmanuel-odjidja/' },
+      { platform: 'Google Scholar', url: 'https://scholar.google.co.uk/citations?user=jIiNtLYAAAAJ&hl=en' },
+      { platform: 'ORCID', url: 'https://orcid.org/0000-0002-7858-9011' },
+      { platform: 'ResearchGate', url: 'https://www.researchgate.net/profile/Emmanuel_Odjidja' },
+      { platform: 'GitHub', url: 'https://github.com/emmaodjidja-sys' },
     ] satisfies SocialLink[],
   },
-
-  affiliations: [
-    'RSTMH, Royal Society of Tropical Medicine and Hygiene',
-    'Queen Margaret University, Institute of Global Health and Development',
-  ] as const,
 }

@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { siteContent } from '@/lib/content'
-import { ThemeToggle } from '@/components/ThemeToggle'
 import { Pagination } from '@/components/Pagination'
 
 const { writing } = siteContent
@@ -50,7 +49,6 @@ export function WritingClient() {
             Back
           </Link>
           <h1 className="font-serif text-[1rem] font-semibold text-cream-100 light:text-ink-800">Writing</h1>
-          <ThemeToggle />
         </div>
       </header>
 

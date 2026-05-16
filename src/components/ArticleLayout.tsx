@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { ThemeToggle } from '@/components/ThemeToggle'
 
 interface ArticleLayoutProps {
   title: string
@@ -19,7 +18,6 @@ export function ArticleLayout({ title, publication, year, children }: ArticleLay
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
             Back
           </Link>
-          <ThemeToggle />
         </div>
       </header>
 
