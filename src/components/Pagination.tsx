@@ -14,7 +14,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="text-caption font-medium text-ink-400 hover:text-terra-500 disabled:opacity-30 disabled:hover:text-ink-400 transition-colors duration-300 px-3 py-2 light:text-ink-500"
+        className="text-caption font-medium text-ink-400 hover:text-terra-500 disabled:opacity-30 disabled:hover:text-ink-400 transition-colors duration-150 px-3 py-2 light:text-ink-500"
       >
         Previous
       </button>
@@ -22,7 +22,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`text-caption font-medium px-3 py-2 transition-colors duration-300 ${
+          className={`text-caption font-medium px-3 py-2 transition-colors duration-150 ${
             page === currentPage
               ? 'text-terra-500'
               : 'text-ink-500 hover:text-cream-200 light:hover:text-ink-800'
@@ -35,7 +35,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="text-caption font-medium text-ink-400 hover:text-terra-500 disabled:opacity-30 disabled:hover:text-ink-400 transition-colors duration-300 px-3 py-2 light:text-ink-500"
+        className="text-caption font-medium text-ink-400 hover:text-terra-500 disabled:opacity-30 disabled:hover:text-ink-400 transition-colors duration-150 px-3 py-2 light:text-ink-500"
       >
         Next
       </button>

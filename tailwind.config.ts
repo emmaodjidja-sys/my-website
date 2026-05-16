@@ -15,12 +15,14 @@ const config: Config = {
           850: '#1c1c25',
           800: '#23232e',
           700: '#2e2e3d',
-          600: '#3d3d4f',
-          500: '#52526a',
-          400: '#6b6b85',
-          300: '#8a8aa3',
-          200: '#acacc0',
-          100: '#d2d2de',
+          // 600 + 500 + 400 raised to clear WCAG on ink-900.
+          // Was #3d3d4f / #52526a / #6b6b85 — all failed AA for content text.
+          600: '#65657d', // ~3.1:1 — borders, decorative tiny copy
+          500: '#7e7e96', // ~4.6:1 — passes AA for body text
+          400: '#9595ad', // ~5.8:1 — secondary copy, dates, metadata
+          300: '#acacc0', // ~6.9:1 — primary muted text
+          200: '#cacad8',
+          100: '#e0e0e8',
           50: '#ededf2',
         },
         terra: {

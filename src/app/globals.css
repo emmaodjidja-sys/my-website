@@ -24,6 +24,17 @@
     @apply bg-cream-50 text-ink-800;
   }
 
+  /* Honour user's motion preference. Stops grain loop, breathing
+     backgrounds, framer-motion entrances, and scroll-linked transforms. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   /* Terracotta selection */
   ::selection {
     background: #c4653a;

@@ -67,7 +67,7 @@ export function PublicationsClient() {
   const dismissToast = useCallback(() => setToastVisible(false), [])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       {/* Minimal header */}
       <header className="sticky top-0 z-50 bg-ink-900/80 backdrop-blur-xl border-b border-ink-800/50 light:bg-cream-50/80 light:border-cream-300/50">
         <div className="mx-auto max-w-[90rem] px-6 sm:px-10 lg:px-16 xl:px-20 h-14 flex items-center justify-between">
@@ -90,7 +90,7 @@ export function PublicationsClient() {
               placeholder="Search publications..."
               value={search}
               onChange={e => { setSearch(e.target.value); setPage(1) }}
-              className="w-full bg-transparent border-b border-ink-700 pl-10 pr-4 py-3 text-body-sm text-cream-200 placeholder:text-ink-500 focus:border-terra-500 focus:outline-none transition-colors duration-500 light:border-cream-300 light:text-ink-800 light:focus:border-terra-500"
+              className="w-full bg-transparent border-b border-ink-700 pl-10 pr-4 py-3 text-body-sm text-cream-200 placeholder:text-ink-500 focus:border-terra-500 focus:outline-none transition-colors duration-150 light:border-cream-300 light:text-ink-800 light:focus:border-terra-500"
             />
           </div>
 
@@ -100,7 +100,7 @@ export function PublicationsClient() {
               <button
                 key={theme}
                 onClick={() => { setActiveTheme(theme); setPage(1) }}
-                className={`px-3.5 py-2 text-[0.75rem] font-medium tracking-wide transition-all duration-400 ${
+                className={`px-3.5 py-2 text-[0.75rem] font-medium tracking-wide transition-colors duration-150 ${
                   activeTheme === theme
                     ? 'bg-terra-500 text-cream-50'
                     : 'text-ink-400 hover:text-terra-400 light:text-ink-500'
@@ -115,7 +115,7 @@ export function PublicationsClient() {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => { setActiveYear(null); setPage(1) }}
-              className={`px-3 py-1.5 text-[0.7rem] font-medium tracking-wide transition-all duration-300 ${
+              className={`px-3 py-1.5 text-[0.7rem] font-medium tracking-wide transition-colors duration-150 ${
                 !activeYear ? 'text-terra-500 border-b border-terra-500' : 'text-ink-500 hover:text-ink-300 light:hover:text-ink-700'
               }`}
             >
@@ -125,7 +125,7 @@ export function PublicationsClient() {
               <button
                 key={year}
                 onClick={() => { setActiveYear(year); setPage(1) }}
-                className={`px-3 py-1.5 text-[0.7rem] font-mono font-medium tracking-wide transition-all duration-300 ${
+                className={`px-3 py-1.5 text-[0.7rem] font-mono font-medium tracking-wide transition-colors duration-150 ${
                   activeYear === year ? 'text-terra-500 border-b border-terra-500' : 'text-ink-500 hover:text-ink-300 light:hover:text-ink-700'
                 }`}
               >
@@ -144,7 +144,7 @@ export function PublicationsClient() {
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeTheme}-${activeYear}-${search}-${page}`}
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
@@ -152,7 +152,7 @@ export function PublicationsClient() {
             {paginated.map((pub, i) => (
               <motion.div
                 key={pub.title}
-                initial={{ opacity: 0, y: 12 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.02, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="group border-b border-ink-800/50 py-6 md:py-8 light:border-cream-300/50"
@@ -164,7 +164,7 @@ export function PublicationsClient() {
                   <div>
                     {pub.url ? (
                       <a href={pub.url} target="_blank" rel="noopener noreferrer" className="group/link">
-                        <h3 className="font-serif text-[clamp(1.05rem,1.5vw,1.25rem)] font-semibold leading-snug text-cream-100 group-hover/link:text-terra-400 transition-colors duration-400 light:text-ink-800 light:group-hover/link:text-terra-600">
+                        <h3 className="font-serif text-[clamp(1.05rem,1.5vw,1.25rem)] font-semibold leading-snug text-cream-100 group-hover/link:text-terra-400 transition-colors duration-150 light:text-ink-800 light:group-hover/link:text-terra-600">
                           {pub.title}
                         </h3>
                       </a>
@@ -183,7 +183,7 @@ export function PublicationsClient() {
                     </span>
                     <button
                       onClick={() => handleCopy(pub)}
-                      className="text-[0.7rem] font-medium text-ink-500 hover:text-terra-500 transition-colors duration-300 light:text-ink-400"
+                      className="text-[0.7rem] font-medium text-ink-500 hover:text-terra-500 transition-colors duration-150 light:text-ink-400"
                       title="Copy APA citation"
                     >
                       Cite
@@ -191,7 +191,7 @@ export function PublicationsClient() {
                     {pub.url && (
                       <a href={pub.url} target="_blank" rel="noopener noreferrer">
                         <svg
-                          className="w-4 h-4 text-ink-600 hover:text-terra-500 transition-all duration-300 hover:translate-x-0.5 hover:-translate-y-0.5"
+                          className="w-4 h-4 text-ink-600 hover:text-terra-500 transition-colors duration-150 hover:translate-x-0.5 hover:-translate-y-0.5"
                           viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                         >
                           <path d="M7 17L17 7M17 7H7M17 7v10" />

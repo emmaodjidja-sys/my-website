@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emmanuel Nene Odjidja — Working Paper Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f7f3eb;
+  --paper-rule: #d6cdb8;
+  --ink: #1c1d22;
+  --ink-soft: #4a4b54;
+  --ink-faint: #8a8b91;
+  --rule: #2a2b30;
+  --accent: #8a1f1f;            /* JPAL-style oxblood */
+  --accent-faint: #c98d8d;
+  --serif: 'Source Serif 4', 'EB Garamond', Georgia, serif;
+  --sans: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.55;
+  font-feature-settings: 'kern', 'liga', 'onum';
+}
+
+/* ====== Working-paper cover ====== */
+.cover {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 80px 64px 56px;
+  border-bottom: 4px double var(--rule);
+}
+.cover .meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 64px;
+}
+.cover .meta-row .pub { color: var(--accent); font-weight: 600; }
+.cover h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  margin: 0 0 18px;
+  max-width: 22ch;
+}
+.cover .subtitle {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.25rem;
+  margin: 0 0 56px;
+  max-width: 42ch;
+  line-height: 1.4;
+}
+.byline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+.byline dt {
+  font-family: var(--sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.byline dd { margin: 0 0 16px; color: var(--ink); }
+.byline dd a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-faint); }
+.byline dd a:hover { border-bottom-color: var(--accent); }
+
+.abstract {
+  margin-top: 48px;
+  max-width: 70ch;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.abstract::before {
+  content: 'Abstract';
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* ====== Body — 2 column with marginalia ====== */
+.body {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 64px 64px 120px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  column-gap: 64px;
+}
+@media (max-width: 880px) {
+  .body { grid-template-columns: 1fr; }
+  .body .margin { display: none; }
+}
+
+section.numbered {
+  grid-column: 1 / 2;
+  padding: 36px 0 12px;
+  border-top: 1px solid var(--paper-rule);
+  position: relative;
+  scroll-margin-top: 80px;
+}
+section.numbered + .margin { border-top: 1px solid var(--paper-rule); padding: 36px 0 12px; }
+section.numbered h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0 0 8px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.sec-num {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+section.numbered p {
+  max-width: 64ch;
+  margin: 0 0 1em;
+}
+section.numbered p:first-of-type::first-letter {
+  font-size: 2.6em;
+  float: left;
+  line-height: 0.92;
+  padding-right: 8px;
+  padding-top: 4px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Right-column marginalia */
+.margin {
+  grid-column: 2 / 3;
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding-top: 50px;
+}
+.margin .note {
+  margin-bottom: 28px;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent-faint);
+}
+.margin .note-label {
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-size: 9.5px;
+  margin-bottom: 4px;
+}
+.margin .note-body { color: var(--ink-soft); }
+.margin .coord { font-variant-numeric: tabular-nums; color: var(--ink); }
+
+/* Footnotes inline */
+sup.fn {
+  font-feature-settings: 'sups';
+  color: var(--accent);
+  font-weight: 600;
+  margin-left: 1px;
+  cursor: help;
+}
+
+/* Publications table */
+table.pubs {
+  width: 100%;
+  max-width: 64ch;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+table.pubs th {
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+  font-weight: 600;
+  padding: 8px 12px 8px 0;
+  border-bottom: 2px solid var(--rule);
+}
+table.pubs td {
+  padding: 14px 12px 14px 0;
+  border-bottom: 1px solid var(--paper-rule);
+  vertical-align: top;
+}
+table.pubs td.year {
+  font-family: var(--sans);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+  width: 56px;
+}
+table.pubs td.title { color: var(--ink); }
+table.pubs td.title em { color: var(--ink-soft); font-style: italic; }
+table.pubs td.title a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent-faint); }
+table.pubs td.title a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Page-footer colophon */
+.colophon {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 64px 80px;
+  border-top: 4px double var(--rule);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+}
+.colophon a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--paper-rule); }
+
+/* Equation-style methods callout */
+.methods-callout {
+  margin: 24px 0;
+  padding: 20px 24px;
+  background: rgba(138, 31, 31, 0.04);
+  border-left: 3px solid var(--accent);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 64ch;
+}
+.methods-callout code {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  color: var(--ink);
+}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="meta-row">
+    <span class="pub">EVALUATION · RESEARCH · METHOD</span>
+    <span>Geneva · 2026</span>
+  </div>
+
+  <h1>Designing evidence systems where they are likeliest to fail.</h1>
+  <p class="subtitle">Twelve years of monitoring, evaluation, and applied research across Sub-Saharan Africa, the Sahel, and South Asia.</p>
+
+  <dl class="byline">
+    <div>
+      <dt>Author</dt>
+      <dd>Emmanuel Nene Odjidja</dd>
+      <dt>Affiliation</dt>
+      <dd>Global Community Engagement and Resilience Fund (GCERF), Geneva</dd>
+      <dt>Editorial</dt>
+      <dd>Section Editor, <em>Journal of MultiDisciplinary Evaluation</em></dd>
+    </div>
+    <div>
+      <dt>Education</dt>
+      <dd>MSc Global Health (Distinction), Queen Margaret University, Edinburgh</dd>
+      <dt>Languages</dt>
+      <dd>English, French</dd>
+      <dt>Contact</dt>
+      <dd><a href="#contact">write@emmanuelneneodjidja.org</a></dd>
+    </div>
+  </dl>
+
+  <p class="abstract">
+    This page is an account of what I work on, why, and with whom. I am an
+    evaluator and applied researcher. I design and implement monitoring and
+    evaluation systems for programmes operating under the constraints typical of
+    fragile and conflict-affected settings — security incidents, attrition,
+    absent baseline data, partner turnover. My published work, listed at §3,
+    spans health systems, nutrition, infectious disease, and the
+    climate–conflict–food insecurity nexus across West Africa, East Africa, the
+    Sahel, North Africa, and South Asia.
+  </p>
+</header>
+
+<main class="body">
+
+  <section class="numbered" id="background">
+    <span class="sec-num">§ 1 — Background</span>
+    <h2>The through-line</h2>
+    <p>
+      If a programme works, it should be proven using sound evidence, not
+      anecdotes.<sup class="fn">1</sup> That conviction has shaped twelve years
+      of work across South Sudan, Burundi, Ghana, the Sahel, Tunisia, and Sri
+      Lanka — testing methods where they are likeliest to fail. I read
+      epidemiology at Queen Margaret University in Edinburgh. I currently lead
+      monitoring, evaluation, research, and learning at GCERF, and edit the
+      case-based evaluations section of the <em>Journal of MultiDisciplinary
+      Evaluation</em>.
+    </p>
+    <p>
+      Most of what I have learned about evaluation, I have learned by watching
+      well-specified designs collapse on contact with the field, and by then
+      asking what salvageable evidence remains.
+    </p>
+  </section>
+
+  <aside class="margin">
+    <div class="note">
+      <span class="note-label">Note 1</span>
+      <span class="note-body">
+        From the field-notes (Bujumbura, <span class="coord">2020-04-12</span>).
+        First articulated in writing as a section heading for an unpublished
+        internal review of M&E systems at Village Health Works.
+      </span>
+    </div>
+  </aside>
+
+  <section class="numbered" id="practice">
+    <span class="sec-num">§ 2 — Practice</span>
+    <h2>What I do</h2>
+    <p>
+      I design evaluations around a stubborn principle: when conditions on the
+      ground refuse to cooperate with the plan, the design has to be flexible
+      enough to produce evidence anyway. In practice that means a working
+      preference for matched difference-in-differences, propensity-score
+      matching, event-study designs, and mixed methods<sup class="fn">2</sup> —
+      chosen for what the setting can support, not for what looks rigorous on
+      paper.
+    </p>
+
+    <div class="methods-callout">
+      <strong>Working specification</strong> for the matched DiD applied to
+      Ghana's CHPS health-financing reform (<a href="#">Odjidja et al., 2022</a>):
+      <br>
+      <code>Y<sub>idt</sub> = α + β·(Post<sub>t</sub> × Treat<sub>i</sub>) + θ<sub>d</sub> + γ<sub>t</sub> + ε<sub>idt</sub></code>
+      <br>
+      with propensity-score weights on district-level pre-period covariates and
+      cluster-robust SEs at the district.
+    </div>
+
+    <p>
+      Twenty-nine peer-reviewed articles to date. I work in English and French,
+      and have lived field experience in nine countries.
+    </p>
+  </section>
+
+  <aside class="margin">
+    <div class="note">
+      <span class="note-label">Note 2</span>
+      <span class="note-body">
+        Mixed methods, here, mostly mean integrating qualitative key-informant
+        rounds with the quantitative panel — not a separate strand. The
+        qualitative is for understanding mechanism; the quantitative is for
+        bounding the effect.
+      </span>
+    </div>
+    <div class="note">
+      <span class="note-label">Geographies, in order</span>
+      <span class="note-body">
+        <span class="coord">Ghana</span> (2013–15) ·
+        <span class="coord">South Sudan</span> (2016–18) ·
+        <span class="coord">Burundi</span> (2018–21) ·
+        <span class="coord">Sahel + Tunisia + Sri Lanka</span> (2021–present, GCERF portfolio)
+      </span>
+    </div>
+  </aside>
+
+  <section class="numbered" id="publications">
+    <span class="sec-num">§ 3 — Selected publications</span>
+    <h2>Peer-reviewed work, 2017–2025</h2>
+    <table class="pubs">
+      <thead><tr><th>Year</th><th>Reference</th></tr></thead>
+      <tbody>
+        <tr><td class="year">2025</td><td class="title"><a href="#">Tuberculosis mortality and drug resistance among patients under TB treatment before and during COVID-19 in Burundi.</a> <em>BMC Infectious Diseases.</em></td></tr>
+        <tr><td class="year">2024</td><td class="title"><a href="#">Small Fish Big Impact: Improving nutrition during pregnancy and lactation.</a> <em>Nutrients.</em></td></tr>
+        <tr><td class="year">2022</td><td class="title"><a href="#">The effect of health-financing reforms on incidence and management of childhood infections in Ghana: a matched DiD impact evaluation.</a> <em>BMC Public Health.</em></td></tr>
+        <tr><td class="year">2020</td><td class="title"><a href="#">2030 Countdown to combating malnutrition in Burundi: proactive approaches for case detection.</a> <em>International Health (Oxford).</em></td></tr>
+        <tr><td class="year">2019</td><td class="title"><a href="#">Delivery of integrated infectious disease control services under the new ANC guidelines: a service readiness assessment in Tanzania.</a> <em>BMC Health Services Research.</em></td></tr>
+        <tr><td class="year">2018</td><td class="title"><a href="#">Control of infectious disease during pregnancy among pastoralists in South Sudan.</a> <em>Pastoralism (Springer).</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:18px; font-size: 0.95rem;"><a href="#" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-faint);">Full list of 29 publications →</a></p>
+  </section>
+
+  <aside class="margin">
+    <div class="note">
+      <span class="note-label">Indexed at</span>
+      <span class="note-body">
+        Google Scholar · ORCID · ResearchGate ·
+        <span class="coord">h-index updated quarterly</span>
+      </span>
+    </div>
+  </aside>
+
+  <section class="numbered" id="writing">
+    <span class="sec-num">§ 4 — Writing</span>
+    <h2>Long-form commentary</h2>
+    <p>
+      I write occasional essays about the gap between evaluation as we are
+      trained to do it and evaluation as it must be conducted in fragile
+      settings. Recent pieces:
+    </p>
+    <ul style="padding-left: 0; list-style: none; max-width: 64ch; margin-top: 8px;">
+      <li style="padding: 12px 0; border-bottom: 1px solid var(--paper-rule);"><a href="#" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent-faint);">The Evaluation Gap: Why Development Programmes Fail to Prove Their Worth</a> <span style="color: var(--ink-faint); font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; margin-left: 8px;">2025</span></li>
+      <li style="padding: 12px 0; border-bottom: 1px solid var(--paper-rule);"><a href="#" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent-faint);">Evidence in Fragile Settings: Lessons from a Decade of Field Evaluation</a> <span style="color: var(--ink-faint); font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; margin-left: 8px;">2025</span></li>
+      <li style="padding: 12px 0; border-bottom: 1px solid var(--paper-rule);"><a href="#" style="color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent-faint);">Climate Change, Food Insecurity and Violent Extremism in the Sahel</a> <span style="color: var(--ink-faint); font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; margin-left: 8px;">2022</span></li>
+    </ul>
+  </section>
+
+  <aside class="margin"></aside>
+
+  <section class="numbered" id="contact">
+    <span class="sec-num">§ 5 — Contact</span>
+    <h2>Correspondence</h2>
+    <p>
+      I welcome correspondence about research collaboration, evaluation design
+      reviews, peer review, and editorial submissions to the case-based
+      evaluations section of <em>JMDE</em>. I do not generally take on
+      short-form consulting outside my GCERF portfolio.
+    </p>
+    <p>Direct: <a href="#" style="color: var(--accent); border-bottom: 1px solid var(--accent-faint); text-decoration: none;">write@emmanuelneneodjidja.org</a> · LinkedIn · Google Scholar · ResearchGate · GitHub</p>
+  </section>
+
+  <aside class="margin"></aside>
+
+</main>
+
+<footer class="colophon">
+  <span>Last revised <span style="color: var(--ink);">16 May 2026</span></span>
+  <span>Set in Source Serif 4 &amp; IBM Plex Sans</span>
+  <span>© Emmanuel Nene Odjidja</span>
+</footer>
+
+</body>
+</html>

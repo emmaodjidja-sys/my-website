@@ -80,22 +80,22 @@ export function Header() {
   return (
     <>
       <motion.header
-        initial={{ opacity: 0, y: -10 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ease-out-expo ${
+        className={`fixed top-0 inset-x-0 z-50 transition-colors duration-200 ease-out-expo ${
           scrolled
             ? 'bg-ink-900/70 backdrop-blur-xl light:bg-cream-50/70'
             : 'bg-transparent'
         }`}
       >
-        <nav className={`mx-auto flex max-w-[90rem] items-center justify-between px-6 sm:px-10 lg:px-16 xl:px-20 transition-all duration-500 ${
+        <nav className={`mx-auto flex max-w-[90rem] items-center justify-between px-6 sm:px-10 lg:px-16 xl:px-20 transition-colors duration-150 ${
           scrolled ? 'h-14' : 'h-16'
         }`}>
           {/* Logo with pulsing dot */}
           <a
             href="#"
-            className="font-serif text-[1.1rem] font-bold tracking-tight text-cream-50 hover:text-terra-500 transition-colors duration-400 light:text-ink-800"
+            className="font-serif text-[1.1rem] font-bold tracking-tight text-cream-50 hover:text-terra-500 transition-colors duration-150 light:text-ink-800"
             aria-label="Back to top"
           >
             ENO
@@ -115,7 +115,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 ref={el => { linkRefs.current[link.href] = el }}
-                className={`relative px-3.5 py-2 text-[0.78rem] font-medium tracking-wide transition-colors duration-400 ${
+                className={`relative px-3.5 py-2 text-[0.78rem] font-medium tracking-wide transition-colors duration-150 ${
                   activeSection === link.href.replace('#', '')
                     ? 'text-cream-100 light:text-ink-800'
                     : 'text-ink-400 hover:text-cream-100 light:text-ink-500 light:hover:text-ink-800'
@@ -148,15 +148,15 @@ export function Header() {
               aria-expanded={mobileOpen}
             >
               <div className="relative w-5 h-3">
-                <span className={`absolute left-0 w-full h-[1.5px] bg-cream-200 light:bg-ink-700 transition-all duration-400 ease-out-expo ${mobileOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'}`} />
-                <span className={`absolute left-0 w-full h-[1.5px] bg-cream-200 light:bg-ink-700 transition-all duration-400 ease-out-expo ${mobileOpen ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'}`} />
+                <span className={`absolute left-0 w-full h-[1.5px] bg-cream-200 light:bg-ink-700 transition-colors duration-150 ease-out-expo ${mobileOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'}`} />
+                <span className={`absolute left-0 w-full h-[1.5px] bg-cream-200 light:bg-ink-700 transition-colors duration-150 ease-out-expo ${mobileOpen ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'}`} />
               </div>
             </button>
           </div>
         </nav>
       </motion.header>
 
-      {/* Mobile overlay — slides from right */}
+      {/* Mobile overlay. slides from right */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -175,7 +175,7 @@ export function Header() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 + i * 0.04, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="block font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-cream-50 hover:text-terra-500 transition-colors duration-300 light:text-ink-800"
+                  className="block font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-cream-50 hover:text-terra-500 transition-colors duration-150 light:text-ink-800"
                 >
                   {link.label}
                 </motion.a>

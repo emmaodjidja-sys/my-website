@@ -38,7 +38,7 @@ export function Writing() {
 
         {/* Featured card */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -73,7 +73,7 @@ export function Writing() {
           {rest.map((post) => (
             <motion.div
               key={post.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -81,7 +81,7 @@ export function Writing() {
               {post.url ? (
                 <SmartLink
                   href={post.url}
-                  className="group block border-b border-ink-800/50 light:border-cream-300/50 py-8 md:py-10 hover:bg-terra-500/[0.03] transition-colors duration-300"
+                  className="group block border-b border-ink-800/50 light:border-cream-300/50 py-8 md:py-10 hover:bg-terra-500/[0.03] transition-colors duration-150"
                 >
                   <WritingRow post={post} />
                 </SmartLink>
@@ -116,7 +116,7 @@ function WritingRow({ post }: { post: typeof writing[number] }) {
         <span className="text-caption italic text-ink-600 md:mt-1 md:block light:text-ink-400">{post.publication}</span>
       </div>
       <div>
-        <h3 className="font-serif text-[clamp(1.15rem,1.8vw,1.4rem)] font-semibold leading-tight text-cream-100 group-hover:text-terra-400 transition-colors duration-400 light:text-ink-800 light:group-hover:text-terra-600">
+        <h3 className="font-serif text-[clamp(1.15rem,1.8vw,1.4rem)] font-semibold leading-tight text-cream-100 group-hover:text-terra-400 transition-colors duration-150 light:text-ink-800 light:group-hover:text-terra-600">
           {post.title}
         </h3>
         <p className="mt-2 text-body-sm text-ink-300 leading-relaxed light:text-ink-600 line-clamp-2">
@@ -126,7 +126,7 @@ function WritingRow({ post }: { post: typeof writing[number] }) {
       {post.url && (
         <div className="hidden md:flex justify-end pt-1">
           <svg
-            className="w-4 h-4 text-ink-600 group-hover:text-terra-500 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="w-4 h-4 text-ink-600 group-hover:text-terra-500 transition-colors duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
           >
             <path d="M7 17L17 7M17 7H7M17 7v10" />

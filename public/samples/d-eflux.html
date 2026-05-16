@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emmanuel Nene Odjidja</title>
+<style>
+:root {
+  /* Path 3: cool monochrome chrome, one signature mark in kuntunkuni red. */
+  --bg: #fafaf6;
+  --ink: #0c0c14;
+  --ink-2: #262630;
+  --ink-3: #6a6a78;
+  --ink-4: #9c9caa;
+  --rule: #e2e2dc;
+  --hover-tint: #ededec;
+  --signature: #6E1818;          /* Adinkra kuntunkuni ink, Ntonso, Asante */
+  --image-ground: #f0ece0;       /* matte plate behind figures */
+
+  --marq-h: 38px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink-2);
+  font-family: 'Neue Haas Unica', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  font-feature-settings: 'kern';
+  padding-top: var(--marq-h);
+}
+a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-4);
+  padding-bottom: 1px;
+}
+a:hover { background: var(--hover-tint); border-bottom-color: var(--ink); }
+
+/* ============ MARQUEE ============ */
+.marquee {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: #fff; border-bottom: 1px solid var(--ink);
+  height: var(--marq-h); display: flex; align-items: center; overflow: hidden;
+}
+.marquee::before {
+  content: ''; width: 0; height: 0;
+  border-top: 7px solid transparent; border-bottom: 7px solid transparent;
+  border-left: 12px solid var(--signature);
+  margin: 0 14px; flex-shrink: 0;
+}
+.marquee-track {
+  display: flex; gap: 56px; white-space: nowrap;
+  animation: marquee 38s linear infinite;
+  font-size: 13px; letter-spacing: 0.02em; color: var(--ink);
+}
+.marquee-track span.dot { color: var(--ink-4); }
+.marquee-track strong { font-weight: 700; }
+.marquee a { border: none; padding: 0; }
+.marquee a:hover { background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* ============ NAMEPLATE + NAV ============ */
+.nameplate {
+  border-bottom: 1px solid var(--ink);
+  padding: 14px 24px;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.nameplate .left { text-align: left; color: var(--ink-3); }
+.nameplate .right { text-align: right; color: var(--ink-3); }
+.nameplate .brand {
+  font-size: 13px; letter-spacing: 0.06em; font-weight: 700;
+  color: var(--ink); white-space: nowrap;
+}
+
+.nav {
+  border-bottom: 1px solid var(--rule);
+  padding: 9px 24px;
+  display: flex; gap: 26px; font-size: 11px; letter-spacing: 0.10em;
+  text-transform: uppercase; font-weight: 500; overflow-x: auto;
+}
+.nav a { color: var(--ink-2); border: none; padding: 0; }
+.nav a:hover { background: transparent; color: var(--ink); }
+.nav a.current { color: var(--ink); border-bottom: 2px solid var(--ink); padding-bottom: 7px; margin-bottom: -9px; }
+
+/* ============ LEADER ============ */
+.leader {
+  border-bottom: 1px solid var(--rule);
+  padding: 28px 24px 36px;
+  display: grid; grid-template-columns: minmax(0, 1fr) 160px 200px; gap: 36px;
+}
+@media (max-width: 880px) { .leader { grid-template-columns: 1fr; gap: 24px; } }
+.leader h1 {
+  font-size: clamp(1.75rem, 3.5vw, 2.625rem);
+  font-weight: 700; letter-spacing: -0.015em; line-height: 1.05;
+  margin: 0 0 16px; color: var(--ink); max-width: 22ch;
+}
+.leader .standfirst {
+  font-size: 16px; line-height: 1.45; color: var(--ink-2);
+  max-width: 56ch; margin: 0 0 14px;
+}
+.leader .meta { font-size: 12px; color: var(--ink-3); letter-spacing: 0.04em; }
+.leader figure.portrait { margin: 0; }
+.leader figure.portrait img {
+  display: block; width: 160px; height: 160px;
+  object-fit: cover; object-position: top center;
+  border: 1px solid var(--ink);
+  filter: grayscale(100%) contrast(1.04);
+}
+.leader figure.portrait figcaption {
+  font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--ink-3); margin-top: 8px; line-height: 1.4;
+}
+.leader figure.portrait figcaption .name { color: var(--ink); font-weight: 600; display: block; }
+.leader-right { font-size: 12px; line-height: 1.5; color: var(--ink-3); }
+.leader-right dt { display: block; text-transform: uppercase; letter-spacing: 0.10em; font-size: 10px; color: var(--ink); font-weight: 600; margin: 0 0 4px; }
+.leader-right dd { margin: 0 0 16px; color: var(--ink-2); }
+.leader-right a { border-bottom: 1px solid var(--rule); }
+
+/* ============ EDITOR'S NOTE ============ */
+.note {
+  border-bottom: 1px solid var(--rule);
+  padding: 32px 24px 36px;
+  display: grid; grid-template-columns: 180px minmax(0, 1fr) 220px; gap: 36px;
+}
+@media (max-width: 880px) { .note { grid-template-columns: 1fr; gap: 16px; } }
+.note .label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--ink); }
+.note .label .sub { display: block; font-weight: 400; color: var(--ink-3); letter-spacing: 0.10em; margin-top: 4px; }
+.note .body p { margin: 0 0 14px; font-size: 17px; line-height: 1.55; color: var(--ink); max-width: 60ch; }
+.note .body p:first-child { font-size: 19px; line-height: 1.5; }
+.note .body p.italic { font-style: italic; color: var(--ink-2); }
+.note .body .sig { margin-top: 18px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
+.note .aside { font-size: 12px; line-height: 1.55; color: var(--ink-3); border-left: 1px solid var(--rule); padding-left: 16px; }
+.note .aside .h { text-transform: uppercase; letter-spacing: 0.10em; font-size: 10px; color: var(--ink); font-weight: 600; margin-bottom: 6px; }
+.note .aside p { margin: 0 0 12px; color: var(--ink-2); }
+
+/* ============ STRIPS ============ */
+.strip { padding: 22px 0 32px; border-bottom: 1px solid var(--rule); }
+.strip-head {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 16px;
+  padding: 0 24px 14px; border-bottom: 1px solid var(--ink); margin: 0 0 16px;
+  align-items: baseline;
+}
+.strip-head h2 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; margin: 0; color: var(--ink); }
+.strip-head .desc { font-size: 12px; color: var(--ink-3); letter-spacing: 0.04em; line-height: 1.45; max-width: 56ch; }
+.strip-head .see-all { font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--ink); font-weight: 600; white-space: nowrap; border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
+.strip-head .see-all:hover { background: var(--hover-tint); }
+
+.carousel {
+  display: flex; gap: 18px;
+  overflow-x: auto; overflow-y: hidden;
+  padding: 0 24px 8px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin; scrollbar-color: var(--ink-3) transparent;
+}
+.carousel::-webkit-scrollbar { height: 4px; }
+.carousel::-webkit-scrollbar-track { background: transparent; }
+.carousel::-webkit-scrollbar-thumb { background: var(--ink-3); }
+
+/* ============ TEXT CARD (publications, writing, praxis) ============ */
+.card {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--ink);
+  text-decoration: none; color: var(--ink);
+  transition: background 0.12s, color 0.12s;
+}
+.card:hover { background: var(--ink); color: #fff; }
+.card:hover .card-meta, .card:hover .card-yr { color: rgba(255,255,255,0.7); }
+.card:hover .card-tag { border-color: rgba(255,255,255,0.6); color: #fff; }
+.card-cover {
+  height: 160px; padding: 14px 16px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-bottom: 1px solid currentColor; overflow: hidden;
+}
+.card-meta { font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.card-title {
+  font-size: 15px; line-height: 1.18; font-weight: 600;
+  letter-spacing: -0.005em; margin-top: 8px;
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-foot {
+  padding: 10px 16px 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase;
+}
+.card-yr { font-variant-numeric: tabular-nums; color: var(--ink-3); }
+.card-tag { border: 1px solid var(--ink-3); padding: 2px 6px; letter-spacing: 0.08em; color: var(--ink-2); }
+.card.wide { flex: 0 0 320px; }
+.card.wide .card-cover { height: 180px; }
+
+/* ============ IMAGE CARD (research figures, the feature) ============ */
+.icard {
+  flex: 0 0 360px;
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--ink);
+  text-decoration: none; color: var(--ink);
+  transition: background 0.12s;
+}
+.icard:hover { background: var(--ink); color: #fff; }
+.icard:hover .icard-meta, .icard:hover .icard-yr { color: rgba(255,255,255,0.65); }
+.icard:hover .icard-tag { border-color: rgba(255,255,255,0.5); color: #fff; }
+.icard-img {
+  height: 220px;
+  background: var(--image-ground);
+  border-bottom: 1px solid currentColor;
+  overflow: hidden;
+  position: relative;
+}
+.icard-img img {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+.icard-body {
+  padding: 14px 16px 12px;
+  display: flex; flex-direction: column; gap: 6px;
+  min-height: 130px;
+}
+.icard-meta {
+  font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-3); font-weight: 600;
+}
+.icard-title {
+  font-size: 14.5px; line-height: 1.25; font-weight: 600;
+  letter-spacing: -0.005em;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.icard-foot {
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase;
+}
+.icard-yr { font-variant-numeric: tabular-nums; color: var(--ink-3); }
+.icard-tag { border: 1px solid var(--ink-3); padding: 2px 6px; letter-spacing: 0.08em; color: var(--ink-2); }
+
+/* taller image area for portrait-orientation figures */
+.icard.tall .icard-img { height: 260px; }
+
+/* ============ EXPERIENCE list ============ */
+.experience { padding: 30px 24px; border-bottom: 1px solid var(--rule); }
+.experience .heading {
+  display: grid; grid-template-columns: 180px 1fr auto; gap: 32px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--ink);
+}
+.experience .heading h2 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; margin: 0; color: var(--ink); }
+.experience .heading .lede { font-size: 12px; color: var(--ink-3); max-width: 64ch; line-height: 1.5; }
+.experience ul { list-style: none; padding: 0; margin: 4px 0 0; }
+.experience li {
+  display: grid; grid-template-columns: 80px 1fr 200px; gap: 24px;
+  padding: 14px 0; border-bottom: 1px solid var(--rule);
+  font-size: 14px; align-items: baseline;
+}
+.experience li .y { color: var(--ink-3); font-variant-numeric: tabular-nums; font-size: 12px; }
+.experience li .role { color: var(--ink); font-weight: 500; }
+.experience li .org { color: var(--ink-3); font-size: 12px; }
+
+/* ============ CONTACT + COLOPHON ============ */
+.contact {
+  padding: 30px 24px; border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 180px 1fr; gap: 36px;
+}
+.contact h2 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; margin: 0; color: var(--ink); }
+.contact p { margin: 0 0 12px; font-size: 14px; line-height: 1.55; }
+.contact .links { margin-top: 16px; font-size: 12px; letter-spacing: 0.06em; }
+.contact .links a { margin-right: 14px; padding-bottom: 2px; }
+
+footer.colophon {
+  padding: 22px 24px 36px;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+}
+footer.colophon a { color: var(--ink-3); border: none; padding: 0; }
+footer.colophon a:hover { color: var(--ink); background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+footer .right { text-align: right; }
+footer .right a + a { margin-left: 16px; }
+</style>
+</head>
+<body>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-label="Currently working on">
+  <div class="marquee-track">
+    <span><strong>NOW</strong> &middot; PRAXIS v1.0 launches at Glocal Evaluation Week, 3 June 2026</span>
+    <span class="dot">·</span>
+    <span><strong>NEW</strong> &middot; Tuberculosis mortality and drug resistance in Burundi, <em>BMC Infectious Diseases</em> (2025)</span>
+    <span class="dot">·</span>
+    <span><strong>EDITING</strong> &middot; JMDE case-based evaluations, next issue. Open to submissions.</span>
+    <span class="dot">·</span>
+    <span><strong>IN PROGRESS</strong> &middot; Climate, conflict, food insecurity nexus across Burkina Faso, Mali, Niger</span>
+    <span class="dot">·</span>
+    <span><strong>NOW</strong> &middot; PRAXIS v1.0 launches at Glocal Evaluation Week, 3 June 2026</span>
+    <span class="dot">·</span>
+    <span><strong>NEW</strong> &middot; Tuberculosis mortality and drug resistance in Burundi, <em>BMC Infectious Diseases</em> (2025)</span>
+    <span class="dot">·</span>
+    <span><strong>EDITING</strong> &middot; JMDE case-based evaluations, next issue. Open to submissions.</span>
+    <span class="dot">·</span>
+    <span><strong>IN PROGRESS</strong> &middot; Climate, conflict, food insecurity nexus across Burkina Faso, Mali, Niger</span>
+    <span class="dot">·</span>
+  </div>
+</div>
+
+<header class="nameplate">
+  <div class="left"></div>
+  <div class="brand">Emmanuel Nene Odjidja</div>
+  <div class="right">№ 04 · May 2026</div>
+</header>
+
+<nav class="nav" aria-label="Primary">
+  <a href="#" class="current">Index</a>
+  <a href="#research">Research</a>
+  <a href="#publications">Publications</a>
+  <a href="#writing">Writing</a>
+  <a href="#praxis">PRAXIS</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section class="leader">
+  <div>
+    <h1>Monitoring and evaluation in fragile and conflict-affected settings.</h1>
+    <p class="standfirst">
+      Twelve years of work across South Sudan, Burundi, Ghana, the Sahel,
+      Tunisia, and Sri Lanka. M&amp;E Specialist at
+      <a href="https://www.gcerf.org">GCERF</a>. Section Editor,
+      <a href="#">Journal of MultiDisciplinary Evaluation</a>.
+    </p>
+    <p class="meta">
+      Twenty-nine peer-reviewed articles. MSc Global Health (Distinction),
+      <a href="#">Queen Margaret University</a>. English and French.
+    </p>
+  </div>
+  <figure class="portrait">
+    <img src="/profile.JPG" alt="">
+    <figcaption>
+      <span class="name">Emmanuel Nene Odjidja</span>
+    </figcaption>
+  </figure>
+  <dl class="leader-right">
+    <dt>Position</dt>
+    <dd>M&amp;E Specialist, Research, Design and Learning, GCERF</dd>
+    <dt>Editorial</dt>
+    <dd>Section Editor, Case-Based Evaluations, JMDE</dd>
+    <dt>Indexed at</dt>
+    <dd><a href="#">Google Scholar</a> · <a href="#">ORCID</a> · <a href="#">ResearchGate</a></dd>
+  </dl>
+</section>
+
+<!-- EDITOR'S NOTE -->
+<section class="note" aria-label="Editor's note">
+  <div class="label">
+    Note
+  </div>
+  <div class="body">
+    <p>
+      Twelve years in, the one question I keep returning to is this: when the
+      field refuses to cooperate with the design, what evidence is still
+      worth producing?
+    </p>
+    <p>
+      I grew up in Ghana. I work in English and French, mostly in places
+      where neither is the first language on the ground. I read epidemiology
+      at Queen Margaret University, and I have spent most of my career
+      arguing in print, politely, that the most valuable evaluations are not
+      the most methodologically sophisticated; they are the ones designed
+      with enough pragmatism to survive first contact with the field.
+    </p>
+    <p class="italic">
+      I run half-marathons. The full marathon remains theoretically
+      appealing. Most of what is on this page is the long version of that
+      sentence about evidence and pragmatism, laid out as a working index,
+      because that is the form I trust most.
+    </p>
+    <p class="sig">ENO</p>
+  </div>
+  <aside class="aside">
+    <div class="h">Currently · May 2026</div>
+    <p>Finalising <a href="#">PRAXIS v1.0</a> for launch at Glocal Evaluation Week, 3 June.</p>
+    <p>Co-authoring a paper on the climate, conflict, and food-insecurity nexus across Burkina Faso, Mali, and Niger.</p>
+    <p>Editing the next issue of JMDE’s case-based evaluations section. Open to submissions.</p>
+  </aside>
+</section>
+
+<!-- ============ SELECTED RESEARCH (the feature strip, real figures) ============ -->
+<section class="strip" id="research">
+  <div class="strip-head">
+    <h2>Selected research</h2>
+    <div class="desc">Working analyses and field briefs across the Sahel and Mopti regions. Swipe →</div>
+    <a href="#" class="see-all">All research →</a>
+  </div>
+  <div class="carousel" tabindex="0">
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/01-liptako-gourma.jpg" alt="Map of VE attacks in Liptako-Gourma, color-coded by year, 2022 to 2025"></div>
+      <div class="icard-body">
+        <span class="icard-meta">GCERF Field Brief · Sahel</span>
+        <span class="icard-title">Direction of VE attacks: Liptako-Gourma. JNIM shifts southwest as the Boucle du Mouhoun records a 79 percent increase, 2022 to 2024.</span>
+        <span class="icard-foot"><span class="icard-yr">2025</span><span class="icard-tag">Cartography</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/03-chad-sudan-corridor.jpg" alt="Map of VE attacks in Chad toward the Sudan border area"></div>
+      <div class="icard-body">
+        <span class="icard-meta">GCERF Field Brief · Chad</span>
+        <span class="icard-title">Chad toward the Sudan area. Violence clusters in Lac province and the eastern Ouaddaï-Sila corridor; 33 percent of activity is unidentified armed groups.</span>
+        <span class="icard-foot"><span class="icard-yr">2025</span><span class="icard-tag">Cartography</span></span>
+      </div>
+    </a>
+
+    <a class="icard tall" href="#">
+      <div class="icard-img"><img src="/samples/research/04-typology-map.jpg" alt="Frontier-typology classification map of West and Central Africa, 2012 to 2018 training with 2019 to 2025 first-entry overlay"></div>
+      <div class="icard-body">
+        <span class="icard-meta">Working Paper · Economic Precarity and VE</span>
+        <span class="icard-title">A four-class frontier typology trained on 2012 to 2018 admin-2 data, validated by 2019 to 2025 first-entry events.</span>
+        <span class="icard-foot"><span class="icard-yr">2026</span><span class="icard-tag">Spatial typology</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/05-hazard-archetypes.png" alt="Forest plot of predicted first-entry hazard at four economic precarity archetypes"></div>
+      <div class="icard-body">
+        <span class="icard-meta">Working Paper · Economic Precarity and VE</span>
+        <span class="icard-title">Predicted first-entry hazard at four archetypes: low risk, poor only, poor with corridor, frontier risk.</span>
+        <span class="icard-foot"><span class="icard-yr">2026</span><span class="icard-tag">Survival</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/06-hazard-by-country.png" alt="Line chart of first-entry hazard by country, 2012 to 2025, with Mali rising sharply post-2023"></div>
+      <div class="icard-body">
+        <span class="icard-meta">Working Paper · 9-country West and Central Africa</span>
+        <span class="icard-title">First-entry hazard by country, 2012 to 2025. Mali’s monthly hazard rises to 33 percent of at-risk units.</span>
+        <span class="icard-foot"><span class="icard-yr">2026</span><span class="icard-tag">Time series</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/07-feature-importance.png" alt="Bar chart of feature importance for predicting first-entry VE events; spatial contagion is largest"></div>
+      <div class="icard-body">
+        <span class="icard-meta">Working Paper · Economic Precarity and VE</span>
+        <span class="icard-title">Feature importance for first-entry prediction. Spatial contagion dominates; relative wealth and prior VE are next.</span>
+        <span class="icard-foot"><span class="icard-yr">2026</span><span class="icard-tag">ML</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/08-pverm-arss-coef.png" alt="Forest plot of ARSS coefficient on PVE-RM theta subscales; governance grievance and erosion of values significant"></div>
+      <div class="icard-body">
+        <span class="icard-meta">PVE-RM Working Paper · 10 GCERF Sahel grantees</span>
+        <span class="icard-title">ARSS effect on PVE-RM subscales. Governance grievance and erosion of values move significantly toward vulnerability.</span>
+        <span class="icard-foot"><span class="icard-yr">2026</span><span class="icard-tag">Mixed model</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/11-pverm-heterogeneity.png" alt="Two-panel scatter and binned-mean plot showing heterogeneity in ARSS effect on PVE-RM theta, S-learner CATE per respondent, binned by commune-level conflict exposure"></div>
+      <div class="icard-body">
+        <span class="icard-meta">PVE-RM Working Paper · S-learner CATE</span>
+        <span class="icard-title">Heterogeneity in ARSS effect on PVE-RM. CATE per respondent, binned by commune-level conflict exposure; ATE = 0.05 standard deviations.</span>
+        <span class="icard-foot"><span class="icard-yr">2026</span><span class="icard-tag">Causal heterogeneity</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/09-phq9-intervention.png" alt="Scatter plot of mean depression by violence exposure and intervention arm in Mopti"></div>
+      <div class="icard-body">
+        <span class="icard-meta">KAOURAL · Mopti, Mali</span>
+        <span class="icard-title">Mean PHQ-9 by violence exposure and intervention arm. Treated communes flatten the slope between exposure and depression.</span>
+        <span class="icard-foot"><span class="icard-yr">2025</span><span class="icard-tag">RCT</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/research/10-posterior-irr.png" alt="Histogram of Bayesian posterior IRR for intervention, median 0.271, 95 percent CrI 0.188 to 0.383"></div>
+      <div class="icard-body">
+        <span class="icard-meta">KAOURAL Bayesian · Mopti, Mali</span>
+        <span class="icard-title">Posterior IRR (intervention) = 0.27 [0.19, 0.38]. Probability the intervention reduces incidence is essentially 1.</span>
+        <span class="icard-foot"><span class="icard-yr">2025</span><span class="icard-tag">Bayesian</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ PUBLICATIONS (image cards with editorial journal covers) ============ -->
+<section class="strip" id="publications">
+  <div class="strip-head">
+    <h2>Publications</h2>
+    <div class="desc">Peer-reviewed work, 2017 to 2025. Swipe →</div>
+    <a href="#" class="see-all">All 29 →</a>
+  </div>
+  <div class="carousel" tabindex="0">
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/publications/pub-01-bmc-infdis-2025.png" alt="BMC Infectious Diseases, 2025"></div>
+      <div class="icard-body">
+        <span class="icard-meta">BMC Infectious Diseases · 2025</span>
+        <span class="icard-title">Tuberculosis mortality and drug resistance among patients under TB treatment before and during COVID-19 in Burundi</span>
+        <span class="icard-foot"><span class="icard-yr">2025</span><span class="icard-tag">Health</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/publications/pub-02-nutrients-2024.png" alt="Nutrients, MDPI, 2024"></div>
+      <div class="icard-body">
+        <span class="icard-meta">Nutrients (MDPI) · 2024</span>
+        <span class="icard-title">Small Fish Big Impact: improving nutrition during pregnancy and lactation, and empowerment for marginalised women</span>
+        <span class="icard-foot"><span class="icard-yr">2024</span><span class="icard-tag">Nutrition</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/publications/pub-03-research-square-2024.png" alt="Research Square preprint, 2024"></div>
+      <div class="icard-body">
+        <span class="icard-meta">Research Square (preprint) · 2024</span>
+        <span class="icard-title">Survival of newborns and determinants of their mortality in Burundi: a prospective cohort study</span>
+        <span class="icard-foot"><span class="icard-yr">2024</span><span class="icard-tag">Maternal</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/publications/pub-04-bmc-public-health-2022.png" alt="BMC Public Health, 2022"></div>
+      <div class="icard-body">
+        <span class="icard-meta">BMC Public Health · 2022</span>
+        <span class="icard-title">The effect of health-financing reforms on incidence and management of childhood infections in Ghana: a matched DiD impact evaluation</span>
+        <span class="icard-foot"><span class="icard-yr">2022</span><span class="icard-tag">Financing</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/publications/pub-05-int-health-2020.png" alt="International Health, Oxford, 2020"></div>
+      <div class="icard-body">
+        <span class="icard-meta">International Health (Oxford) · 2020</span>
+        <span class="icard-title">2030 Countdown to combating malnutrition in Burundi: proactive approaches for case detection</span>
+        <span class="icard-foot"><span class="icard-yr">2020</span><span class="icard-tag">Nutrition</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/publications/pub-06-j-med-virology-2020.png" alt="Journal of Medical Virology, Wiley, 2020"></div>
+      <div class="icard-body">
+        <span class="icard-meta">J Med Virology (Wiley) · 2020</span>
+        <span class="icard-title">COVID-19 and viral hepatitis coinfection: guidelines for integrated screening and treatment</span>
+        <span class="icard-foot"><span class="icard-yr">2020</span><span class="icard-tag">Health</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/publications/pub-07-bmc-hsr-2019.png" alt="BMC Health Services Research, 2019"></div>
+      <div class="icard-body">
+        <span class="icard-meta">BMC Health Services Research · 2019</span>
+        <span class="icard-title">Delivery of integrated infectious disease control services under the new ANC guidelines: a service readiness assessment in Tanzania</span>
+        <span class="icard-foot"><span class="icard-yr">2019</span><span class="icard-tag">Health</span></span>
+      </div>
+    </a>
+
+    <a class="icard" href="#">
+      <div class="icard-img"><img src="/samples/publications/pub-08-pastoralism-2018.png" alt="Pastoralism, Springer, 2018"></div>
+      <div class="icard-body">
+        <span class="icard-meta">Pastoralism (Springer) · 2018</span>
+        <span class="icard-title">Control of infectious disease during pregnancy among pastoralists in South Sudan: a case for investment into mobile clinics</span>
+        <span class="icard-foot"><span class="icard-yr">2018</span><span class="icard-tag">Health</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ WRITING ============ -->
+<section class="strip" id="writing">
+  <div class="strip-head">
+    <h2>Writing</h2>
+    <div class="desc">Long-form commentary, reflection, and field notes.</div>
+    <a href="#" class="see-all">All writing →</a>
+  </div>
+  <div class="carousel" tabindex="0">
+    <a class="card wide" href="#">
+      <div class="card-cover">
+        <span class="card-meta">Commentary · 2025</span>
+        <span class="card-title">The Evaluation Gap: Why Development Programmes Fail to Prove Their Worth</span>
+      </div>
+      <div class="card-foot"><span class="card-yr">2025</span><span class="card-tag">Feature</span></div>
+    </a>
+    <a class="card wide" href="#">
+      <div class="card-cover">
+        <span class="card-meta">Reflection · 2025</span>
+        <span class="card-title">Evidence in Fragile Settings: Lessons from a Decade of Field Evaluation</span>
+      </div>
+      <div class="card-foot"><span class="card-yr">2025</span><span class="card-tag">Essay</span></div>
+    </a>
+    <a class="card wide" href="#">
+      <div class="card-cover">
+        <span class="card-meta">Analysis · 2024</span>
+        <span class="card-title">When Data Meets Context: The Case for Mixed Methods in Global Health</span>
+      </div>
+      <div class="card-foot"><span class="card-yr">2024</span><span class="card-tag">Essay</span></div>
+    </a>
+    <a class="card wide" href="#">
+      <div class="card-cover">
+        <span class="card-meta">Field Note · 2023</span>
+        <span class="card-title">Rethinking Nutrition Surveillance in Conflict Zones</span>
+      </div>
+      <div class="card-foot"><span class="card-yr">2023</span><span class="card-tag">Note</span></div>
+    </a>
+    <a class="card wide" href="#">
+      <div class="card-cover">
+        <span class="card-meta">GCERF · 2022</span>
+        <span class="card-title">Climate Change, Food Insecurity and Violent Extremism in the Sahel</span>
+      </div>
+      <div class="card-foot"><span class="card-yr">2022</span><span class="card-tag">Report</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ PRAXIS ============ -->
+<section class="strip" id="praxis">
+  <div class="strip-head">
+    <h2>PRAXIS</h2>
+    <div class="desc">Open-source programme-evaluation infrastructure. Launching at Glocal Evaluation Week, 3 June 2026.</div>
+    <a href="#" class="see-all">Project →</a>
+  </div>
+  <div class="carousel" tabindex="0">
+    <a class="card wide" href="#">
+      <div class="card-cover">
+        <span class="card-meta">Toolkit · v1.0</span>
+        <span class="card-title">Programme evaluation toolkit: 298 indicators across 11 sectors. Browser-based, open-source.</span>
+      </div>
+      <div class="card-foot"><span class="card-yr">2026</span><span class="card-tag">Tool</span></div>
+    </a>
+    <a class="card wide" href="#">
+      <div class="card-cover">
+        <span class="card-meta">EWS · Research</span>
+        <span class="card-title">Conflict early warning: econometric research using ACLED data, stacked event-study design for VE prediction in the Sahel.</span>
+      </div>
+      <div class="card-foot"><span class="card-yr">2026</span><span class="card-tag">Conflict</span></div>
+    </a>
+    <a class="card wide" href="https://github.com/emmaodjidja-sys/praxis">
+      <div class="card-cover">
+        <span class="card-meta">Source · GitHub</span>
+        <span class="card-title">github.com / emmaodjidja-sys / praxis</span>
+      </div>
+      <div class="card-foot"><span class="card-yr">.</span><span class="card-tag">Open</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="experience" id="experience">
+  <div class="heading">
+    <h2>Experience</h2>
+    <div class="lede">Roles and field postings, 2013 to present.</div>
+    <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color: var(--ink-3); white-space:nowrap;">12 yrs</span>
+  </div>
+  <ul>
+    <li><span class="y">2021 to now</span><span class="role">M&amp;E Specialist, Research, Design and Learning</span><span class="org">GCERF</span></li>
+    <li><span class="y">2024 to now</span><span class="role">Section Editor, Case-Based Evaluations</span><span class="org">JMDE</span></li>
+    <li><span class="y">2018 to 21</span><span class="role">Research, M&amp;E Technical Lead</span><span class="org">Village Health Works, Burundi</span></li>
+    <li><span class="y">2016 to 18</span><span class="role">M&amp;E Advisor and Research Lead</span><span class="org">AVSI Foundation, South Sudan</span></li>
+    <li><span class="y">2013 to 15</span><span class="role">Programme and Research Officer</span><span class="org">Ghana Health Service / CRC / USAID</span></li>
+  </ul>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <h2>Contact</h2>
+  <div>
+    <p>
+      I welcome correspondence about research collaboration, evaluation
+      design, peer review, and editorial submissions to JMDE. I do not
+      generally take on short-form consulting outside the GCERF portfolio.
+    </p>
+    <p style="font-size:15px; font-weight:600;">
+      <a href="mailto:praxisai.labs@gmail.com">praxisai.labs@gmail.com</a>
+    </p>
+    <div class="links">
+      <a href="#">LinkedIn</a>
+      <a href="#">Google Scholar</a>
+      <a href="#">ORCID</a>
+      <a href="#">ResearchGate</a>
+      <a href="#">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div>Emmanuel Nene Odjidja · 2026 · Set in Helvetica</div>
+  <div class="right">
+    <a href="#">RSS</a>
+    <a href="#">PGP key</a>
+    <a href="#">CV (PDF)</a>
+    <a href="#research">↑ Top</a>
+  </div>
+</footer>
+
+</body>
+</html>

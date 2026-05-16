@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emmanuel Nene Odjidja — Data Magazine Sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page: #f4f1ea;          /* newsprint cream */
+  --page-alt: #ebe6db;
+  --ink: #14171c;
+  --ink-soft: #4b525c;
+  --ink-faint: #8f96a0;
+  --rule: #14171c;
+  --rule-soft: #b8b1a0;
+
+  --c-health:   #5f7a8b;
+  --c-conflict: #b04a3c;
+  --c-nutr:     #6f8a5e;
+  --c-financing:#c08a2e;
+  --c-mch:      #7c5d8e;
+
+  --display: 'Fraunces', 'Times New Roman', serif;
+  --body:    'Fraunces', 'Times New Roman', serif;
+  --sans:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.kicker {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ====== Masthead ====== */
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 0;
+}
+.masthead-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.masthead .brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.masthead nav a { color: var(--ink-soft); text-decoration: none; margin-left: 28px; font-weight: 500; }
+.masthead nav a:hover { color: var(--ink); }
+
+/* ====== Lead ====== */
+.lead {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 40px 32px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: end;
+}
+@media (max-width: 880px) { .lead { grid-template-columns: 1fr; padding: 40px 24px; } }
+
+.lead .kicker { color: var(--c-conflict); margin-bottom: 18px; display: block; }
+.lead h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin: 0 0 22px;
+  color: var(--ink);
+}
+.lead h1 em { font-style: italic; color: var(--c-conflict); font-weight: 500; }
+.lead .standfirst {
+  font-family: var(--body);
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+  max-width: 44ch;
+}
+.byline {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+.byline strong { color: var(--ink); font-weight: 600; }
+
+/* ====== Hero chart ====== */
+.chart-wrap {
+  border: 1px solid var(--rule);
+  padding: 20px 24px;
+  background: var(--page-alt);
+}
+.chart-wrap .chart-title {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.chart-wrap .chart-subtitle {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.chart-wrap svg { display: block; width: 100%; height: auto; }
+.chart-wrap .chart-source {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 12px;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  font-family: var(--sans);
+  font-size: 11px;
+  margin-top: 14px;
+  color: var(--ink);
+}
+.legend .swatch {
+  display: inline-block;
+  width: 10px; height: 10px;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+/* ====== Body essay ====== */
+.body {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 56px 40px 96px;
+}
+.section-rule {
+  border-top: 1px solid var(--rule);
+  margin: 56px 0 32px;
+  padding-top: 24px;
+}
+.body p {
+  font-size: 19px;
+  line-height: 1.65;
+  margin: 0 0 1em;
+}
+.body p:first-of-type::first-letter {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 4.6em;
+  float: left;
+  line-height: 0.84;
+  padding: 6px 10px 0 0;
+  color: var(--c-conflict);
+}
+.body h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.75rem;
+  letter-spacing: -0.015em;
+  margin: 0 0 16px;
+}
+.body .pullquote {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.25;
+  color: var(--ink);
+  border-left: 3px solid var(--c-conflict);
+  padding: 12px 0 12px 22px;
+  margin: 32px 0;
+}
+.body .pullquote cite { display: block; margin-top: 12px; font-style: normal; font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+.body .figure {
+  margin: 36px -40px;
+  background: var(--page-alt);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 28px 40px;
+}
+.body .figure-cap {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+.body .figure-cap strong { color: var(--ink); font-weight: 600; }
+
+/* ====== Map ====== */
+.map-wrap svg { width: 100%; height: auto; }
+.map-dot { fill: var(--c-conflict); }
+.map-dot.faint { fill: var(--c-conflict); opacity: 0.45; }
+.map-land { fill: #d8d2c2; stroke: var(--page); stroke-width: 0.5; }
+.map-label { font-family: var(--sans); font-size: 10px; fill: var(--ink-soft); font-weight: 500; }
+
+/* ====== Reading list ====== */
+.reading {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 40px;
+  border-top: 1px solid var(--rule);
+}
+.reading h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0 0 24px;
+}
+.reading-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+@media (max-width: 880px) { .reading-grid { grid-template-columns: 1fr; } }
+.reading article { border-top: 2px solid var(--ink); padding-top: 14px; }
+.reading article .kicker {
+  font-size: 10px;
+  color: var(--c-conflict);
+  display: block;
+  margin-bottom: 8px;
+}
+.reading article h4 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+.reading article h4 a { color: var(--ink); text-decoration: none; }
+.reading article h4 a:hover { color: var(--c-conflict); }
+.reading article p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin: 0; }
+
+/* ====== Footer ====== */
+.colophon {
+  border-top: 1px solid var(--rule);
+  background: var(--page-alt);
+  padding: 32px 40px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.colophon-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between;
+}
+.colophon a { color: var(--ink-soft); text-decoration: none; margin-right: 18px; }
+.colophon a:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="brand">Emmanuel Nene Odjidja</span>
+    <nav>
+      <a href="#essay">Essay</a>
+      <a href="#data">By the data</a>
+      <a href="#reading">Recent writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="lead">
+  <div>
+    <span class="kicker">Field notes · Evaluation</span>
+    <h1>Twelve years of evidence, <em>told as data.</em></h1>
+    <p class="standfirst">
+      A monitoring &amp; evaluation specialist's accounting of the
+      programmes, places, methods and findings that have occupied his career —
+      and the unfashionable lesson the field keeps confirming.
+    </p>
+    <p class="byline">By <strong>Emmanuel Nene Odjidja</strong>, in Geneva &middot; Updated 16 May 2026</p>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Figure 1 · 2017–2025</div>
+    <div class="chart-subtitle">Twenty-nine peer-reviewed publications, by theme.</div>
+
+    <svg viewBox="0 0 600 220" role="img" aria-label="Publications per year, stacked by theme, 2017–2025">
+      <!-- Axis baseline -->
+      <line x1="40" y1="190" x2="590" y2="190" stroke="#14171c" stroke-width="1"/>
+      <!-- Year labels -->
+      <g font-family="Inter, sans-serif" font-size="10" fill="#4b525c" text-anchor="middle">
+        <text x="71"  y="208">2017</text>
+        <text x="131" y="208">2018</text>
+        <text x="191" y="208">2019</text>
+        <text x="251" y="208">2020</text>
+        <text x="311" y="208">2021</text>
+        <text x="371" y="208">2022</text>
+        <text x="431" y="208">2023</text>
+        <text x="491" y="208">2024</text>
+        <text x="551" y="208">2025</text>
+      </g>
+      <!-- Y-axis (count) -->
+      <g font-family="Inter, sans-serif" font-size="9" fill="#8f96a0" text-anchor="end">
+        <text x="35" y="190">0</text>
+        <text x="35" y="150">2</text>
+        <text x="35" y="110">4</text>
+        <text x="35" y="70">6</text>
+      </g>
+      <line x1="40" y1="150" x2="590" y2="150" stroke="#b8b1a0" stroke-dasharray="2,3" stroke-width="0.5"/>
+      <line x1="40" y1="110" x2="590" y2="110" stroke="#b8b1a0" stroke-dasharray="2,3" stroke-width="0.5"/>
+      <line x1="40" y1="70"  x2="590" y2="70"  stroke="#b8b1a0" stroke-dasharray="2,3" stroke-width="0.5"/>
+
+      <!-- Stacked bars: stylised counts. Each rect is 28 wide, centered on year tick. -->
+      <!-- 2017 -->
+      <rect x="57"  y="170" width="28" height="20" fill="#7c5d8e"/>
+      <!-- 2018 -->
+      <rect x="117" y="170" width="28" height="20" fill="#5f7a8b"/>
+      <!-- 2019 -->
+      <rect x="177" y="170" width="28" height="20" fill="#5f7a8b"/>
+      <!-- 2020 -->
+      <rect x="237" y="150" width="28" height="20" fill="#6f8a5e"/>
+      <rect x="237" y="130" width="28" height="20" fill="#5f7a8b"/>
+      <!-- 2021 -->
+      <rect x="297" y="170" width="28" height="20" fill="#5f7a8b"/>
+      <!-- 2022 -->
+      <rect x="357" y="150" width="28" height="20" fill="#c08a2e"/>
+      <rect x="357" y="130" width="28" height="20" fill="#b04a3c"/>
+      <!-- 2023 -->
+      <rect x="417" y="170" width="28" height="20" fill="#b04a3c"/>
+      <!-- 2024 -->
+      <rect x="477" y="150" width="28" height="20" fill="#7c5d8e"/>
+      <rect x="477" y="130" width="28" height="20" fill="#6f8a5e"/>
+      <!-- 2025 -->
+      <rect x="537" y="170" width="28" height="20" fill="#5f7a8b"/>
+    </svg>
+
+    <div class="legend">
+      <span><span class="swatch" style="background:#5f7a8b"></span>Health systems &amp; infectious disease</span>
+      <span><span class="swatch" style="background:#6f8a5e"></span>Nutrition</span>
+      <span><span class="swatch" style="background:#c08a2e"></span>Financing</span>
+      <span><span class="swatch" style="background:#b04a3c"></span>Conflict / VE</span>
+      <span><span class="swatch" style="background:#7c5d8e"></span>Maternal &amp; child</span>
+    </div>
+    <div class="chart-source">Source · Author's records, indexed at Google Scholar / ORCID.</div>
+  </div>
+</section>
+
+<article class="body" id="essay">
+
+  <p>
+    If a programme works, it should be proven using sound evidence, not
+    anecdotes. That has been the through-line of twelve years of work — across
+    South Sudan, Burundi, Ghana, the Sahel, Tunisia, and Sri Lanka — testing
+    methods where they are likeliest to fail. The chart above is a partial
+    record: twenty-nine articles, eight years, five themes.
+  </p>
+
+  <p>
+    Most of what I have learned about evaluation I have learned by watching
+    well-specified designs collapse on contact with the field, and by then
+    asking what salvageable evidence remains. In displacement camps without
+    baseline data, in health systems where every security incident resets the
+    timeline, in nutrition surveys across three countries with no consistent
+    sampling frame — the textbook design is rarely available. The work, then,
+    is in the choices that follow.
+  </p>
+
+  <blockquote class="pullquote">
+    The most valuable evaluations are not the most methodologically
+    sophisticated. They are the ones designed with enough pragmatism to survive
+    first contact with the field.
+    <cite>— On evidence in fragile settings, 2025</cite>
+  </blockquote>
+
+  <h2 id="data">By the geography</h2>
+
+  <p>
+    The figure below maps the places I have worked, weighted by years on the
+    ground. Three concentrations stand out: West Africa (Ghana, then the
+    Sahel), East Africa (South Sudan, Burundi), and the GCERF portfolio's
+    later footprint into North Africa and South Asia.
+  </p>
+
+  <div class="figure">
+    <div class="map-wrap">
+      <svg viewBox="0 0 600 320" role="img" aria-label="Project locations across Sub-Saharan Africa and beyond">
+        <!-- Stylised land shapes (very approximate) -->
+        <path class="map-land" d="M50,90 L260,70 L340,110 L420,90 L520,130 L560,210 L470,290 L320,300 L180,290 L80,250 L40,180 Z"/>
+        <path class="map-land" d="M540,140 L590,160 L595,210 L555,230 Z"/>
+        <!-- Dots: GHA, SSD, BDI, BFA, MLI, NER, TUN, LKA -->
+        <!-- Ghana -->
+        <circle class="map-dot" cx="170" cy="220" r="6"/>
+        <text class="map-label" x="180" y="223">Ghana</text>
+        <!-- South Sudan -->
+        <circle class="map-dot" cx="370" cy="195" r="6"/>
+        <text class="map-label" x="380" y="198">South Sudan</text>
+        <!-- Burundi -->
+        <circle class="map-dot" cx="395" cy="240" r="6"/>
+        <text class="map-label" x="405" y="243">Burundi</text>
+        <!-- Burkina Faso -->
+        <circle class="map-dot faint" cx="195" cy="195" r="5"/>
+        <text class="map-label" x="205" y="190">Burkina Faso</text>
+        <!-- Mali -->
+        <circle class="map-dot faint" cx="160" cy="175" r="5"/>
+        <text class="map-label" x="115" y="160">Mali</text>
+        <!-- Niger -->
+        <circle class="map-dot faint" cx="240" cy="175" r="5"/>
+        <text class="map-label" x="250" y="170">Niger</text>
+        <!-- Tunisia -->
+        <circle class="map-dot faint" cx="230" cy="105" r="5"/>
+        <text class="map-label" x="240" y="105">Tunisia</text>
+        <!-- Sri Lanka -->
+        <circle class="map-dot faint" cx="555" cy="225" r="5"/>
+        <text class="map-label" x="510" y="245">Sri Lanka</text>
+      </svg>
+    </div>
+    <p class="figure-cap"><strong>Figure 2.</strong> Project geographies, 2013–present. Dot radius indicates years on the ground; faint dots indicate portfolio rather than residence-based work.</p>
+  </div>
+
+  <p>
+    The geography matters because the method is not separable from the
+    setting. Difference-in-differences in Ghana's CHPS health-financing
+    reform looked like one thing; the same design transplanted to nutrition
+    surveillance in active-conflict South Sudan would have produced nothing
+    worth defending.<sup class="fn">¹</sup>
+  </p>
+
+  <h2>By the method</h2>
+
+  <p>
+    A working preference, in order of frequency: matched
+    difference-in-differences, propensity-score matching, event-study designs,
+    and mixed methods. The qualitative strand is rarely the headline —
+    but it is what tells you why the quantitative finding holds, where it
+    won't generalise, and what would break it.
+  </p>
+
+</article>
+
+<section class="reading" id="reading">
+  <h3>Recent writing</h3>
+  <div class="reading-grid">
+    <article>
+      <span class="kicker">Commentary · 2025</span>
+      <h4><a href="#">The Evaluation Gap: Why Development Programmes Fail to Prove Their Worth</a></h4>
+      <p>Billions flow into development programming each year. Fewer than one in five programmes undergoes a rigorous impact evaluation. The consequence is not merely academic.</p>
+    </article>
+    <article>
+      <span class="kicker">Reflection · 2025</span>
+      <h4><a href="#">Evidence in Fragile Settings: Lessons from a Decade of Field Evaluation</a></h4>
+      <p>The principles I have come to rely on when the conditions on the ground refuse to cooperate with the evaluation plan.</p>
+    </article>
+    <article>
+      <span class="kicker">Field Note · 2023</span>
+      <h4><a href="#">Rethinking Nutrition Surveillance in Conflict Zones</a></h4>
+      <p>Standard surveillance relies on assumptions that collapse in active conflict. The field needs systems designed for instability from the start.</p>
+    </article>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+    <span>Emmanuel Nene Odjidja · Geneva · 2026</span>
+    <span>
+      <a href="#">LinkedIn</a><a href="#">Scholar</a><a href="#">ResearchGate</a><a href="#">Email</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

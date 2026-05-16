@@ -25,7 +25,7 @@ export function Footer() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-body-sm text-ink-400 hover:text-terra-500 transition-colors duration-300 light:text-ink-500"
+                className="text-body-sm text-ink-400 hover:text-terra-500 transition-colors duration-150 light:text-ink-500"
               >
                 {link.label}
               </a>
@@ -38,7 +38,7 @@ export function Footer() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-body-sm text-ink-400 hover:text-terra-500 transition-colors duration-300 light:text-ink-500"
+                className="text-body-sm text-ink-400 hover:text-terra-500 transition-colors duration-150 light:text-ink-500"
               >
                 {social.platform}
               </a>
@@ -53,7 +53,7 @@ export function Footer() {
           </p>
           <a
             href="#"
-            className="text-caption text-ink-500 hover:text-terra-500 transition-colors duration-300 light:text-ink-400"
+            className="text-caption text-ink-500 hover:text-terra-500 transition-colors duration-150 light:text-ink-400"
           >
             Back to top
           </a>

@@ -25,27 +25,23 @@ export function About() {
     offset: ['start center', 'end center'],
   })
 
-  const quoteOpacity = useTransform(scrollYProgress, [0.05, 0.25], [0, 1])
-  const quoteY = useTransform(scrollYProgress, [0.05, 0.25], [40, 0])
-  const quoteScale = useTransform(scrollYProgress, [0.05, 0.25], [0.97, 1])
   const bioProgressScale = useTransform(bioProgress, [0, 1], [0, 1])
 
   return (
     <section ref={sectionRef} id="about" className="relative py-28 md:py-40">
       <div className="mx-auto max-w-[90rem] px-6 sm:px-10 lg:px-16 xl:px-20">
 
-        {/* Pull quote with terra vertical rule */}
-        <motion.div
-          style={reduced ? {} : { opacity: quoteOpacity, y: quoteY, scale: quoteScale }}
-          className="mb-24 md:mb-36 max-w-5xl"
-        >
+        {/* Pull quote with terra vertical rule. renders visible at SSR */}
+        <div className="mb-24 md:mb-36 max-w-5xl">
           <p className="overline mb-8">About</p>
           <blockquote className="pull-quote-rule">
-            <p className="editorial-quote text-[clamp(1.8rem,4vw,3.5rem)] text-cream-100 light:text-ink-800">
+            <p className="editorial-quote text-balance text-[clamp(1.8rem,4vw,3.5rem)] text-cream-100 light:text-ink-800">
               &ldquo;{about.pullQuote}&rdquo;
             </p>
+            <cite className="not-italic block mt-6 text-[0.7rem] uppercase tracking-[0.18em] font-semibold text-terra-500">{about.pullQuoteCite}
+            </cite>
           </blockquote>
-        </motion.div>
+        </div>
 
         {/* Split layout: portrait left, bio right */}
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[440px_1fr] gap-16 lg:gap-24">
@@ -56,7 +52,7 @@ export function About() {
               <div className="portrait-editorial portrait-frame relative aspect-[3/4] w-full max-w-sm mx-auto lg:mx-0">
                 <Image
                   src="/profile.JPG"
-                  alt="Emmanuel Nene Odjidja"
+                  alt=""
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 340px, 440px"
@@ -64,10 +60,10 @@ export function About() {
                 />
               </div>
               {/* Caption like a journal contributor */}
-              <p className="mt-4 text-[0.7rem] uppercase tracking-[0.18em] font-semibold text-ink-500 text-center lg:text-left light:text-ink-400">
+              <p className="mt-4 text-[0.7rem] uppercase tracking-[0.18em] font-semibold text-cream-200 text-center lg:text-left light:text-ink-700">
                 Emmanuel Nene Odjidja
               </p>
-              <p className="mt-0.5 text-[0.65rem] uppercase tracking-[0.14em] text-ink-600 text-center lg:text-left light:text-ink-400">
+              <p className="mt-0.5 text-[0.65rem] uppercase tracking-[0.14em] text-cream-200/70 text-center lg:text-left light:text-ink-500">
                 M&E Specialist &middot; Researcher &middot; Epidemiologist
               </p>
             </div>
@@ -91,7 +87,7 @@ export function About() {
               ))}
             </StaggerContainer>
 
-            {/* Credentials grid — 3 columns */}
+            {/* Credentials grid. 3 columns */}
             <Reveal delay={0.1} className="mt-16">
               <div className="hr mb-10" />
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
@@ -115,14 +111,14 @@ export function About() {
                     {about.expertise.map((tag) => (
                       tag.tooltip ? (
                         <Tooltip key={tag.label} content={tag.tooltip}>
-                          <span className="border border-ink-700/60 text-ink-300 px-3 py-1.5 text-[0.8rem] tracking-wide hover:border-terra-500/50 hover:text-terra-400 transition-all duration-400 cursor-default light:border-cream-300 light:text-ink-600 light:hover:text-terra-600">
+                          <span className="border border-ink-700/60 text-ink-300 px-3 py-1.5 text-[0.8rem] tracking-wide hover:border-terra-500/50 hover:text-terra-400 transition-colors duration-150 cursor-default light:border-cream-300 light:text-ink-600 light:hover:text-terra-600">
                             {tag.label}
                           </span>
                         </Tooltip>
                       ) : (
                         <span
                           key={tag.label}
-                          className="border border-ink-700/60 text-ink-300 px-3 py-1.5 text-[0.8rem] tracking-wide hover:border-terra-500/50 hover:text-terra-400 transition-all duration-400 cursor-default light:border-cream-300 light:text-ink-600 light:hover:text-terra-600"
+                          className="border border-ink-700/60 text-ink-300 px-3 py-1.5 text-[0.8rem] tracking-wide hover:border-terra-500/50 hover:text-terra-400 transition-colors duration-150 cursor-default light:border-cream-300 light:text-ink-600 light:hover:text-terra-600"
                         >
                           {tag.label}
                         </span>

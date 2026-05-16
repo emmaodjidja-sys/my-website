@@ -62,13 +62,13 @@ export function Experience() {
               return (
                 <motion.div
                   key={exp.role}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={false}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.9, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
                   className="group relative"
                 >
-                  {/* Timeline dot — illuminates when in view */}
+                  {/* Timeline dot. illuminates when in view */}
                   <motion.div
                     className="hidden lg:block absolute left-[40px] top-10 -translate-x-1/2 z-10"
                     initial={{ scale: 0.8 }}
@@ -86,7 +86,7 @@ export function Experience() {
 
                   {/* Card content */}
                   <div className="lg:ml-[80px] border-b border-ink-800/50 lg:border-b-0 max-lg:border-t-2 max-lg:border-t-terra-500/30 py-8 lg:py-10">
-                    <div className="bg-ink-850/30 border-l-2 border-l-terra-500 p-6 lg:p-8 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-ink-950/20 transition-all duration-500 light:bg-cream-100/60 light:hover:shadow-cream-400/20">
+                    <div className="bg-ink-850/30 border-l-2 border-l-terra-500 p-6 lg:p-8 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-ink-950/20 transition-colors duration-150 light:bg-cream-100/60 light:hover:shadow-cream-400/20">
                       <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-4 lg:gap-12">
                         {/* Period + location */}
                         <div>
@@ -112,7 +112,7 @@ export function Experience() {
 
                         {/* Role + description */}
                         <div>
-                          <h3 className="font-serif text-[clamp(1.3rem,2.2vw,1.75rem)] font-semibold leading-tight text-cream-100 mb-1.5 group-hover:text-terra-400 transition-colors duration-500 light:text-ink-800 light:group-hover:text-terra-600">
+                          <h3 className="font-serif text-[clamp(1.3rem,2.2vw,1.75rem)] font-semibold leading-tight text-cream-100 mb-1.5 group-hover:text-terra-400 transition-colors duration-150 light:text-ink-800 light:group-hover:text-terra-600">
                             {exp.role}
                           </h3>
                           <p className="text-body-sm text-gold-400 mb-4 light:text-terra-600 font-medium">

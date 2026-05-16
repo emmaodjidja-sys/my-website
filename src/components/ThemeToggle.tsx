@@ -19,11 +19,14 @@ export function ThemeToggle() {
 
   return (
     <button
+      type="button"
       onClick={toggle}
-      className="relative w-9 h-9 flex items-center justify-center rounded-full text-ink-400 hover:text-terra-500 transition-colors duration-300"
+      className="relative w-9 h-9 flex items-center justify-center rounded-full text-ink-300 hover:text-terra-500 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terra-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900"
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      aria-pressed={!isDark}
     >
       <svg
+        aria-hidden="true"
         width="18"
         height="18"
         viewBox="0 0 24 24"
@@ -32,7 +35,7 @@ export function ThemeToggle() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="transition-transform duration-500 ease-out-expo"
+        className="transition-transform duration-200 ease-out-expo"
         style={{ transform: isDark ? 'rotate(0deg)' : 'rotate(180deg)' }}
       >
         {isDark ? (

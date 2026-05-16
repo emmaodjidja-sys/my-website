@@ -22,13 +22,13 @@ export const siteContent = {
 
   about: {
     bio: [
-      'Originally from Ghana, I have spent over a decade working at the frontlines of global health and international development, from pastoralist communities in South Sudan to health facilities in rural Burundi and research institutions in the United Kingdom.',
-      'I hold a Master of Science in Global Health (Distinction) from Queen Margaret University in Edinburgh, with a focus on epidemiology. My professional conviction is simple: if a programme works, it should be proven using sound, methodologically rigorous evidence, not anecdotes.',
-      'My career has been defined by a singular commitment to building credible evaluation systems in the most challenging operational environments. I have designed and managed evaluations of programmes aimed at preventing violent extremism, strengthening health systems, and addressing the intersection of climate change, food insecurity, and conflict across West Africa, East Africa, the Sahel, North Africa, and South Asia.',
-      'My research spans maternal and child health, infectious disease control, nutrition, health financing, and the nexus between climate change, food insecurity, and violent extremism. I am bilingual with full professional proficiency in English and French.',
-      'Outside of work, I am a committed runner and semi-marathonist, still chasing the dream of completing a full marathon.',
+      'If a programme works, it should be proven using sound evidence, not anecdotes. That conviction is the through-line of twelve years of work across South Sudan, Burundi, Ghana, the Sahel, Tunisia, and Sri Lanka, testing methods where they are likeliest to fail.',
+      'I design evaluations around a stubborn principle: when conditions on the ground refuse to cooperate with the plan, the design has to be flexible enough to produce evidence anyway. In practice that means difference-in-differences, propensity score matching, event-study designs, and mixed methods, chosen for what the setting can support rather than what looks rigorous on paper. Twenty-nine peer-reviewed articles to date.',
+      'I am Ghanaian, based in Geneva, and I work across English and French. I read epidemiology at Queen Margaret University in Edinburgh; I currently lead M&E research, design, and learning at GCERF, and edit the case-based evaluations section of the Journal of MultiDisciplinary Evaluation.',
+      'Outside the work: half-marathons. The full marathon remains theoretically appealing.',
     ] as const,
-    pullQuote: 'If a programme works, it should be proven using sound evidence, not anecdotes.',
+    pullQuote: 'The most valuable evaluations are not necessarily the most methodologically sophisticated. They are the ones designed with enough pragmatism to survive first contact with the field.',
+    pullQuoteCite: 'On evidence in fragile settings, 2025',
     education: 'MSc Global Health (Distinction), Queen Margaret University, Edinburgh',
     languages: ['English (Native)', 'French (Full Professional)'] as const,
     expertise: [

@@ -41,7 +41,7 @@ export function WritingClient() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       {/* Minimal header */}
       <header className="sticky top-0 z-50 bg-ink-900/80 backdrop-blur-xl border-b border-ink-800/50 light:bg-cream-50/80 light:border-cream-300/50">
         <div className="mx-auto max-w-[90rem] px-6 sm:px-10 lg:px-16 xl:px-20 h-14 flex items-center justify-between">
@@ -64,7 +64,7 @@ export function WritingClient() {
               placeholder="Search writing..."
               value={search}
               onChange={e => { setSearch(e.target.value); setPage(1) }}
-              className="w-full bg-transparent border-b border-ink-700 pl-10 pr-4 py-3 text-body-sm text-cream-200 placeholder:text-ink-500 focus:border-terra-500 focus:outline-none transition-colors duration-500 light:border-cream-300 light:text-ink-800 light:focus:border-terra-500"
+              className="w-full bg-transparent border-b border-ink-700 pl-10 pr-4 py-3 text-body-sm text-cream-200 placeholder:text-ink-500 focus:border-terra-500 focus:outline-none transition-colors duration-150 light:border-cream-300 light:text-ink-800 light:focus:border-terra-500"
             />
           </div>
 
@@ -74,7 +74,7 @@ export function WritingClient() {
               <button
                 key={outlet}
                 onClick={() => { setActiveOutlet(outlet); setPage(1) }}
-                className={`px-3.5 py-2 text-[0.75rem] font-medium tracking-wide transition-all duration-400 ${
+                className={`px-3.5 py-2 text-[0.75rem] font-medium tracking-wide transition-colors duration-150 ${
                   activeOutlet === outlet
                     ? 'bg-terra-500 text-cream-50'
                     : 'text-ink-400 hover:text-terra-400 light:text-ink-500'
@@ -94,7 +94,7 @@ export function WritingClient() {
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeOutlet}-${search}-${page}`}
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
@@ -128,13 +128,13 @@ export function WritingClient() {
               return (
                 <motion.div
                   key={post.title}
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.02, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Tag
                     {...linkProps}
-                    className="group block border-b border-ink-800/50 light:border-cream-300/50 py-8 md:py-10 hover:bg-terra-500/[0.03] transition-colors duration-300"
+                    className="group block border-b border-ink-800/50 light:border-cream-300/50 py-8 md:py-10 hover:bg-terra-500/[0.03] transition-colors duration-150"
                   >
                     <div className="grid grid-cols-1 md:grid-cols-[100px_1fr_60px] gap-3 md:gap-8 items-start">
                       <div className="flex items-center gap-3 md:block">
@@ -144,7 +144,7 @@ export function WritingClient() {
                         <span className="text-caption italic text-ink-600 md:mt-1 md:block light:text-ink-400">{post.publication}</span>
                       </div>
                       <div>
-                        <h3 className="font-serif text-[clamp(1.15rem,1.8vw,1.4rem)] font-semibold leading-tight text-cream-100 group-hover:text-terra-400 transition-colors duration-400 light:text-ink-800 light:group-hover:text-terra-600">
+                        <h3 className="font-serif text-[clamp(1.15rem,1.8vw,1.4rem)] font-semibold leading-tight text-cream-100 group-hover:text-terra-400 transition-colors duration-150 light:text-ink-800 light:group-hover:text-terra-600">
                           {post.title}
                         </h3>
                         <p className="mt-2 text-body-sm text-ink-300 leading-relaxed light:text-ink-600 line-clamp-2">
@@ -154,7 +154,7 @@ export function WritingClient() {
                       {post.url && (
                         <div className="hidden md:flex justify-end pt-1">
                           <svg
-                            className="w-4 h-4 text-ink-600 group-hover:text-terra-500 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            className="w-4 h-4 text-ink-600 group-hover:text-terra-500 transition-colors duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                           >
                             <path d="M7 17L17 7M17 7H7M17 7v10" />

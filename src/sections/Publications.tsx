@@ -25,46 +25,52 @@ export function Publications() {
         </div>
 
         {/* Curated publication list */}
-        <div>
-          {highlights.map((pub, i) => (
-            <motion.a
+        <ol className="list-none">
+          {highlights.map((pub) => (
+            <motion.li
               key={pub.title}
-              href={pub.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
-              className="group block border-b border-ink-800/50 py-6 md:py-8 light:border-cream-300/50 hover:bg-terra-500/[0.03] transition-colors duration-300"
             >
-              <div className="grid grid-cols-1 md:grid-cols-[80px_1fr_200px] gap-2 md:gap-8 items-start">
-                <span className="font-mono text-[0.75rem] uppercase tracking-[0.14em] font-semibold text-terra-500/70 md:pt-1.5">
-                  {pub.year}
-                </span>
-                <div>
-                  <h3 className="font-serif text-[clamp(1.05rem,1.5vw,1.25rem)] font-semibold leading-snug text-cream-100 group-hover:text-terra-400 transition-colors duration-400 light:text-ink-800 light:group-hover:text-terra-600">
-                    {pub.title}
-                  </h3>
-                  <p className="mt-1.5 text-caption text-ink-500 light:text-ink-400">
-                    <span className="italic">{pub.journal}</span> &middot; {pub.authors}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between md:justify-end gap-4 md:pt-1.5">
-                  <span className="text-[0.65rem] uppercase tracking-[0.14em] text-ink-500 light:text-ink-400 hidden md:inline px-2 py-0.5 border border-ink-800/30 light:border-cream-300/50">
-                    {pub.theme}
-                  </span>
-                  <svg
-                    className="w-4 h-4 text-ink-600 group-hover:text-terra-500 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                  >
-                    <path d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                </div>
-              </div>
-            </motion.a>
+              <article>
+                <a
+                  href={pub.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border-b border-ink-800/50 py-6 md:py-8 light:border-cream-300/50 hover:bg-terra-500/[0.03] transition-colors duration-150 focus-visible:outline-none focus-visible:bg-terra-500/[0.08]"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-[80px_1fr_200px] gap-2 md:gap-8 items-start">
+                    <span className="font-mono text-[0.75rem] uppercase tracking-[0.14em] font-semibold text-terra-500/80 md:pt-1.5 tabular-nums">
+                      {pub.year}
+                    </span>
+                    <div>
+                      <h3 className="font-serif text-pretty text-[clamp(1.05rem,1.5vw,1.25rem)] font-semibold leading-snug text-cream-100 group-hover:text-terra-400 transition-colors duration-150 light:text-ink-800 light:group-hover:text-terra-600">
+                        {pub.title}
+                      </h3>
+                      <p className="mt-1.5 text-caption text-cream-200/80 light:text-ink-500">
+                        <cite className="not-italic"><span className="italic">{pub.journal}</span></cite> &middot; {pub.authors}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between md:justify-end gap-4 md:pt-1.5">
+                      <span className="text-[0.65rem] uppercase tracking-[0.14em] text-cream-200/70 light:text-ink-500 hidden md:inline px-2 py-0.5 border border-gold-400/30 light:border-cream-300/60">
+                        {pub.theme}
+                      </span>
+                      <svg
+                        aria-hidden="true"
+                        className="w-4 h-4 text-cream-200/60 group-hover:text-terra-500 transition-colors duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                      >
+                        <path d="M7 17L17 7M17 7H7M17 7v10" />
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              </article>
+            </motion.li>
           ))}
-        </div>
+        </ol>
 
         {/* View all CTA */}
         <Reveal className="mt-12">

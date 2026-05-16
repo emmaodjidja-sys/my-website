@@ -12,7 +12,7 @@ interface ArticleLayoutProps {
 
 export function ArticleLayout({ title, publication, year, children }: ArticleLayoutProps) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <header className="sticky top-0 z-50 bg-ink-900/80 backdrop-blur-xl border-b border-ink-800/50 light:bg-cream-50/80 light:border-cream-300/50">
         <div className="mx-auto max-w-[90rem] px-6 sm:px-10 lg:px-16 xl:px-20 h-14 flex items-center justify-between">
           <Link href="/#writing" className="flex items-center gap-2 text-[0.85rem] font-medium text-ink-400 hover:text-terra-500 transition-colors light:text-ink-500">
