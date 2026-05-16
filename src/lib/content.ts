@@ -6,13 +6,16 @@ import type {
   WritingPiece,
   SocialLink,
   ClosingStatement,
+  ResearchItem,
+  EditorsNote,
+  MarqueeItem,
 } from './types'
 
 export const siteContent = {
   hero: {
     name: 'Emmanuel Nene Odjidja',
     titles: ['M&E Specialist', 'Researcher', 'Epidemiologist'] as const,
-    tagline: 'I build evaluation systems in places where they\u2019re hardest to build.',
+    tagline: 'I build evaluation systems in places where they are hardest to build.',
     stats: [
       { value: 12, suffix: '+', label: 'Years Experience' },
       { value: 29, suffix: '', label: 'Publications' },
@@ -24,7 +27,7 @@ export const siteContent = {
     bio: [
       'If a programme works, it should be proven using sound evidence, not anecdotes. That conviction is the through-line of twelve years of work across South Sudan, Burundi, Ghana, the Sahel, Tunisia, and Sri Lanka, testing methods where they are likeliest to fail.',
       'I design evaluations around a stubborn principle: when conditions on the ground refuse to cooperate with the plan, the design has to be flexible enough to produce evidence anyway. In practice that means difference-in-differences, propensity score matching, event-study designs, and mixed methods, chosen for what the setting can support rather than what looks rigorous on paper. Twenty-nine peer-reviewed articles to date.',
-      'I am Ghanaian, based in Geneva, and I work across English and French. I read epidemiology at Queen Margaret University in Edinburgh; I currently lead M&E research, design, and learning at GCERF, and edit the case-based evaluations section of the Journal of MultiDisciplinary Evaluation.',
+      'I am Ghanaian, work across English and French. I read epidemiology at Queen Margaret University in Edinburgh; I currently lead M&E research, design, and learning at GCERF, and edit the case-based evaluations section of the Journal of MultiDisciplinary Evaluation.',
       'Outside the work: half-marathons. The full marathon remains theoretically appealing.',
     ] as const,
     pullQuote: 'The most valuable evaluations are not necessarily the most methodologically sophisticated. They are the ones designed with enough pragmatism to survive first contact with the field.',
@@ -57,16 +60,16 @@ export const siteContent = {
 
   experience: [
     {
-      period: '2021 \u2013 Present',
-      role: 'M&E Specialist: Research, Design & Learning',
-      org: 'GCERF \u2014 Global Community Engagement and Resilience Fund',
-      location: 'Geneva',
-      description: 'Design and manage evaluations of PVE programmes across the Sahel (Burkina Faso, Mali, Niger), Tunisia, and Sri Lanka. Lead evaluation design, quality assurance, and evidence synthesis. Co-authored research on the climate\u2013conflict\u2013food insecurity nexus.',
+      period: '2021 to Present',
+      role: 'M&E Specialist: Research, Design and Learning',
+      org: 'GCERF, Global Community Engagement and Resilience Fund',
+      location: '',
+      description: 'Design and manage evaluations of PVE programmes across the Sahel (Burkina Faso, Mali, Niger), Tunisia, and Sri Lanka. Lead evaluation design, quality assurance, and evidence synthesis. Co-authored research on the climate, conflict, and food-insecurity nexus.',
       startYear: 2021,
       endYear: 2026,
     },
     {
-      period: '2024 \u2013 Present',
+      period: '2024 to Present',
       role: 'Section Editor, Case-Based Evaluations',
       org: 'Journal of MultiDisciplinary Evaluation (JMDE)',
       location: '',
@@ -75,8 +78,8 @@ export const siteContent = {
       endYear: 2026,
     },
     {
-      period: '2018 \u2013 2021',
-      role: 'Research, Monitoring & Evaluation Technical Lead',
+      period: '2018-2021',
+      role: 'Research, Monitoring and Evaluation Technical Lead',
       org: 'Village Health Works',
       location: 'Burundi',
       description: 'Led impact evaluations, set up M&E systems, and published peer-reviewed research on malnutrition, neonatal survival, hypertension, and TB. Founded the Kigutu M&E Institute, training 32 clinicians and staff on epidemiology, evaluation, and health systems.',
@@ -84,7 +87,7 @@ export const siteContent = {
       endYear: 2021,
     },
     {
-      period: '2016 \u2013 2018',
+      period: '2016-2018',
       role: 'M&E Advisor / Research Lead',
       org: 'AVSI Foundation',
       location: 'South Sudan',
@@ -93,8 +96,8 @@ export const siteContent = {
       endYear: 2018,
     },
     {
-      period: '2013 \u2013 2015',
-      role: 'Programme & Research Officer',
+      period: '2013-2015',
+      role: 'Programme and Research Officer',
       org: 'Ghana Health Service / CRC / USAID',
       location: 'Ghana',
       description: 'Early career in programme design, monitoring, and classroom-level learning assessments in education and health.',
@@ -104,19 +107,143 @@ export const siteContent = {
   ] satisfies ExperienceEntry[],
 
   publications: [
-    { year: 2025, title: 'Tuberculosis mortality and drug resistance among patients under TB treatment before and during COVID-19 in Burundi', journal: 'BMC Infectious Diseases', authors: 'Iradukunda, Getnet & Odjidja', url: 'https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-025-11093-0', theme: 'Infectious Disease' },
-    { year: 2024, title: 'Small Fish Big Impact: Improving Nutrition during Pregnancy and Lactation, and Empowerment for Marginalized Women', journal: 'Nutrients (MDPI)', authors: 'Saha, Ng, Odjidja et al.', url: 'https://www.mdpi.com/2072-6643/16/12/1829', theme: 'Nutrition' },
-    { year: 2024, title: 'Survival of newborns and determinants of their mortality in Burundi: A prospective cohort study', journal: 'Research Square (Preprint)', authors: 'Ndayishimiye et al. incl. Odjidja', url: 'https://doi.org/10.21203/rs.3.rs-4337583/v1', theme: 'Maternal & Child Health' },
-    { year: 2022, title: 'The effect of health financing reforms on incidence and management of childhood infections in Ghana: A matching DiD impact evaluation', journal: 'BMC Public Health', authors: 'Odjidja et al.', url: 'https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-022-13934-y', theme: 'Health Financing' },
+    { year: 2025, title: 'Tuberculosis mortality and drug resistance among patients under TB treatment before and during COVID-19 in Burundi', journal: 'BMC Infectious Diseases', authors: 'Iradukunda, Getnet & Odjidja', url: 'https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-025-11093-0', theme: 'Infectious Disease', cover: '/publications/pub-01-bmc-infdis-2025.png' },
+    { year: 2024, title: 'Small Fish Big Impact: Improving Nutrition during Pregnancy and Lactation, and Empowerment for Marginalized Women', journal: 'Nutrients (MDPI)', authors: 'Saha, Ng, Odjidja et al.', url: 'https://www.mdpi.com/2072-6643/16/12/1829', theme: 'Nutrition', cover: '/publications/pub-02-nutrients-2024.png' },
+    { year: 2024, title: 'Survival of newborns and determinants of their mortality in Burundi: A prospective cohort study', journal: 'Research Square (Preprint)', authors: 'Ndayishimiye et al. incl. Odjidja', url: 'https://doi.org/10.21203/rs.3.rs-4337583/v1', theme: 'Maternal & Child Health', cover: '/publications/pub-03-research-square-2024.png' },
+    { year: 2022, title: 'The effect of health financing reforms on incidence and management of childhood infections in Ghana: A matching DiD impact evaluation', journal: 'BMC Public Health', authors: 'Odjidja et al.', url: 'https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-022-13934-y', theme: 'Health Financing', cover: '/publications/pub-04-bmc-public-health-2022.png' },
     { year: 2021, title: 'Bibliometric analysis of the top 100 cited articles on HIV/AIDS', journal: 'Annals of Infection', authors: 'Gatasi, Musa & Odjidja', url: 'https://aoi.amegroups.org/article/view/6984/html', theme: 'Infectious Disease' },
-    { year: 2020, title: 'Coronavirus disease 2019 and viral hepatitis coinfection: Provide guidelines for integrated screening and treatment', journal: 'Journal of Medical Virology', authors: 'Odjidja, Laurita Longo, Rizzatti & Bandoh', url: 'https://doi.org/10.1002/jmv.26021', theme: 'Infectious Disease' },
-    { year: 2020, title: '2030 Countdown to combating malnutrition in Burundi: Comparison of proactive approaches for case detection', journal: 'International Health (Oxford)', authors: 'Odjidja et al.', url: 'https://doi.org/10.1093/inthealth/ihz119', theme: 'Nutrition' },
-    { year: 2019, title: 'Delivery of integrated infectious disease control services under the new ANC guidelines: A service readiness assessment in Tanzania', journal: 'BMC Health Services Research', authors: 'Odjidja, Gatasi & Duric', url: 'https://bmchealthservres.biomedcentral.com/articles/10.1186/s12913-021-06588-w', theme: 'Health Systems' },
-    { year: 2018, title: 'Control of infectious disease during pregnancy among pastoralists in South Sudan: A case for investment into mobile clinics', journal: 'Pastoralism (Springer)', authors: 'Odjidja', url: 'https://pastoralismjournal.springeropen.com/articles/10.1186/s13570-018-0132-6', theme: 'Infectious Disease' },
+    { year: 2020, title: 'Coronavirus disease 2019 and viral hepatitis coinfection: Provide guidelines for integrated screening and treatment', journal: 'Journal of Medical Virology', authors: 'Odjidja, Laurita Longo, Rizzatti & Bandoh', url: 'https://doi.org/10.1002/jmv.26021', theme: 'Infectious Disease', cover: '/publications/pub-06-j-med-virology-2020.png' },
+    { year: 2020, title: '2030 Countdown to combating malnutrition in Burundi: Comparison of proactive approaches for case detection', journal: 'International Health (Oxford)', authors: 'Odjidja et al.', url: 'https://doi.org/10.1093/inthealth/ihz119', theme: 'Nutrition', cover: '/publications/pub-05-int-health-2020.png' },
+    { year: 2019, title: 'Delivery of integrated infectious disease control services under the new ANC guidelines: A service readiness assessment in Tanzania', journal: 'BMC Health Services Research', authors: 'Odjidja, Gatasi & Duric', url: 'https://bmchealthservres.biomedcentral.com/articles/10.1186/s12913-021-06588-w', theme: 'Health Systems', cover: '/publications/pub-07-bmc-hsr-2019.png' },
+    { year: 2018, title: 'Control of infectious disease during pregnancy among pastoralists in South Sudan: A case for investment into mobile clinics', journal: 'Pastoralism (Springer)', authors: 'Odjidja', url: 'https://pastoralismjournal.springeropen.com/articles/10.1186/s13570-018-0132-6', theme: 'Infectious Disease', cover: '/publications/pub-08-pastoralism-2018.png' },
     { year: 2017, title: 'Making every baby count: Reflection on the Helping Babies Breathe Program to reduce birth asphyxia in sub-Saharan Africa', journal: 'South African Journal of Child Health', authors: 'Odjidja (Editorial)', url: 'https://doi.org/10.7196/SAJCH.2017.v11i2.1324', theme: 'Maternal & Child Health' },
-    // TODO: Add remaining ~19 publications from Google Scholar profile
-    // https://scholar.google.co.uk/citations?user=jIiNtLYAAAAJ&hl=en
   ] satisfies Publication[],
+
+  research: [
+    {
+      slug: '01-liptako-gourma',
+      image: '/research/01-liptako-gourma.jpg',
+      source: 'GCERF Field Brief',
+      region: 'Sahel',
+      title: 'Direction of VE attacks: Liptako-Gourma. JNIM shifts southwest as the Boucle du Mouhoun records a 79 percent increase, 2022 to 2024.',
+      year: 2025,
+      tag: 'Cartography',
+      alt: 'Map of VE attacks in Liptako-Gourma, color-coded by year, 2022 to 2025',
+    },
+    {
+      slug: '03-chad-sudan-corridor',
+      image: '/research/03-chad-sudan-corridor.jpg',
+      source: 'GCERF Field Brief',
+      region: 'Chad',
+      title: 'Chad toward the Sudan area. Violence clusters in Lac province and the eastern Ouaddaï-Sila corridor; 33 percent of activity is unidentified armed groups.',
+      year: 2025,
+      tag: 'Cartography',
+      alt: 'Map of VE attacks in Chad toward the Sudan border area',
+    },
+    {
+      slug: '04-typology-map',
+      image: '/research/04-typology-map.jpg',
+      source: 'Working Paper',
+      region: 'Economic Precarity and VE',
+      title: 'A four-class frontier typology trained on 2012 to 2018 admin-2 data, validated by 2019 to 2025 first-entry events.',
+      year: 2026,
+      tag: 'Spatial typology',
+      alt: 'Frontier-typology classification map of West and Central Africa, 2012 to 2018 training with 2019 to 2025 first-entry overlay',
+      tall: true,
+    },
+    {
+      slug: '05-hazard-archetypes',
+      image: '/research/05-hazard-archetypes.png',
+      source: 'Working Paper',
+      region: 'Economic Precarity and VE',
+      title: 'Predicted first-entry hazard at four archetypes: low risk, poor only, poor with corridor, frontier risk.',
+      year: 2026,
+      tag: 'Survival',
+      alt: 'Forest plot of predicted first-entry hazard at four economic precarity archetypes',
+    },
+    {
+      slug: '06-hazard-by-country',
+      image: '/research/06-hazard-by-country.png',
+      source: 'Working Paper',
+      region: '9-country West and Central Africa',
+      title: 'First-entry hazard by country, 2012 to 2025. Mali monthly hazard rises to 33 percent of at-risk units.',
+      year: 2026,
+      tag: 'Time series',
+      alt: 'Line chart of first-entry hazard by country, 2012 to 2025, with Mali rising sharply post-2023',
+    },
+    {
+      slug: '07-feature-importance',
+      image: '/research/07-feature-importance.png',
+      source: 'Working Paper',
+      region: 'Economic Precarity and VE',
+      title: 'Feature importance for first-entry prediction. Spatial contagion dominates; relative wealth and prior VE are next.',
+      year: 2026,
+      tag: 'ML',
+      alt: 'Bar chart of feature importance for predicting first-entry VE events; spatial contagion is largest',
+    },
+    {
+      slug: '08-pverm-arss-coef',
+      image: '/research/08-pverm-arss-coef.png',
+      source: 'PVE-RM Working Paper',
+      region: '10 GCERF Sahel grantees',
+      title: 'ARSS effect on PVE-RM subscales. Governance grievance and erosion of values move significantly toward vulnerability.',
+      year: 2026,
+      tag: 'Mixed model',
+      alt: 'Forest plot of ARSS coefficient on PVE-RM theta subscales; governance grievance and erosion of values significant',
+    },
+    {
+      slug: '11-pverm-heterogeneity',
+      image: '/research/11-pverm-heterogeneity.png',
+      source: 'PVE-RM Working Paper',
+      region: 'S-learner CATE',
+      title: 'Heterogeneity in ARSS effect on PVE-RM. CATE per respondent, binned by commune-level conflict exposure; ATE = 0.05 standard deviations.',
+      year: 2026,
+      tag: 'Causal heterogeneity',
+      alt: 'Two-panel scatter and binned-mean plot showing heterogeneity in ARSS effect on PVE-RM theta, S-learner CATE per respondent, binned by commune-level conflict exposure',
+    },
+    {
+      slug: '09-phq9-intervention',
+      image: '/research/09-phq9-intervention.png',
+      source: 'KAOURAL',
+      region: 'Mopti, Mali',
+      title: 'Mean PHQ-9 by violence exposure and intervention arm. Treated communes flatten the slope between exposure and depression.',
+      year: 2025,
+      tag: 'RCT',
+      alt: 'Scatter plot of mean depression by violence exposure and intervention arm in Mopti',
+    },
+    {
+      slug: '10-posterior-irr',
+      image: '/research/10-posterior-irr.png',
+      source: 'KAOURAL Bayesian',
+      region: 'Mopti, Mali',
+      title: 'Posterior IRR (intervention) = 0.27 [0.19, 0.38]. Probability the intervention reduces incidence is essentially 1.',
+      year: 2025,
+      tag: 'Bayesian',
+      alt: 'Histogram of Bayesian posterior IRR for intervention, median 0.271, 95 percent CrI 0.188 to 0.383',
+    },
+  ] satisfies ResearchItem[],
+
+  editorsNote: {
+    date: 'May 2026',
+    body: [
+      { text: 'Twelve years in, the one question I keep returning to is this: when the field refuses to cooperate with the design, what evidence is still worth producing?' },
+      { text: 'I grew up in Ghana. I work in English and French, mostly in places where neither is the first language on the ground. I read epidemiology at Queen Margaret University, and I have spent most of my career arguing in print, politely, that the most valuable evaluations are not the most methodologically sophisticated; they are the ones designed with enough pragmatism to survive first contact with the field.' },
+      { text: 'I run half-marathons. The full marathon remains theoretically appealing. Most of what is on this page is the long version of that sentence about evidence and pragmatism, laid out as a working index, because that is the form I trust most.', italic: true },
+    ],
+    currently: [
+      { html: 'Finalising <a href="/praxis">PRAXIS v1.0</a> for launch at Glocal Evaluation Week, 3 June.' },
+      { html: 'Co-authoring a paper on the climate, conflict, and food-insecurity nexus across Burkina Faso, Mali, and Niger.' },
+      { html: 'Editing the next issue of JMDE case-based evaluations section. Open to submissions.' },
+    ],
+    signature: 'ENO',
+  } satisfies EditorsNote,
+
+  marquee: [
+    { label: 'NOW',         text: 'PRAXIS v1.0 launches at Glocal Evaluation Week, 3 June 2026' },
+    { label: 'NEW',         text: 'Tuberculosis mortality and drug resistance in Burundi, BMC Infectious Diseases (2025)' },
+    { label: 'EDITING',     text: 'JMDE case-based evaluations, next issue. Open to submissions.' },
+    { label: 'IN PROGRESS', text: 'Climate, conflict, food insecurity nexus across Burkina Faso, Mali, and Niger' },
+  ] satisfies MarqueeItem[],
 
   praxis: {
     title: 'PRAXIS',
@@ -162,7 +289,7 @@ export const siteContent = {
       year: 2024,
       title: 'COP28 Sparks Urgency Amid Climate Funding Shortfall',
       publication: 'Think Global Health (CFR)',
-      description: 'How multilateral organisations should finance climate adaptation and mitigation to combat climate change\'s harms.',
+      description: 'How multilateral organisations should finance climate adaptation and mitigation to combat the harms of climate change.',
       url: '/writing/cop28-climate-funding',
       featured: false,
     },
@@ -193,6 +320,7 @@ export const siteContent = {
   ] satisfies WritingPiece[],
 
   contact: {
+    email: 'praxisai.labs@gmail.com',
     closingStatement: {
       line1: 'The best evidence is built in partnership.',
       line2: 'If you are exploring a research collaboration, designing an evaluation framework, or rethinking how evidence shapes policy, I would welcome the conversation.',
@@ -200,13 +328,14 @@ export const siteContent = {
     socials: [
       { platform: 'LinkedIn', descriptor: 'Professional network', url: 'https://www.linkedin.com/in/emmanuel-odjidja/' },
       { platform: 'Google Scholar', descriptor: 'Research profile', url: 'https://scholar.google.co.uk/citations?user=jIiNtLYAAAAJ&hl=en' },
-      { platform: 'GitHub', descriptor: 'Open source work', url: 'https://github.com/emmaodjidja-sys' },
+      { platform: 'ORCID', descriptor: 'Author identifier', url: 'https://orcid.org/0000-0002-7858-9011' },
       { platform: 'ResearchGate', descriptor: 'Academic community', url: 'https://www.researchgate.net/profile/Emmanuel_Odjidja' },
+      { platform: 'GitHub', descriptor: 'Open source work', url: 'https://github.com/emmaodjidja-sys' },
     ] satisfies SocialLink[],
   },
 
   affiliations: [
-    'RSTMH \u2014 Royal Society of Tropical Medicine and Hygiene',
-    'Queen Margaret University \u2014 Institute of Global Health and Development',
+    'RSTMH, Royal Society of Tropical Medicine and Hygiene',
+    'Queen Margaret University, Institute of Global Health and Development',
   ] as const,
 }
