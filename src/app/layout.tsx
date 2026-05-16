@@ -52,11 +52,13 @@ const personSchema = {
     'M&E Specialist, Researcher, and Epidemiologist. Designs and implements evaluation systems for programmes in fragile and conflict-affected settings across the Sahel, East Africa, and South Asia.',
   image: 'https://www.emmanuelneneodjidja.org/profile.JPG',
   url: 'https://www.emmanuelneneodjidja.org',
+  email: 'mailto:praxisai.labs@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/emmanuel-odjidja/',
     'https://scholar.google.co.uk/citations?user=jIiNtLYAAAAJ&hl=en',
-    'https://github.com/emmaodjidja-sys',
+    'https://orcid.org/0000-0002-7858-9011',
     'https://www.researchgate.net/profile/Emmanuel_Odjidja',
+    'https://github.com/emmaodjidja-sys',
   ],
   affiliation: {
     '@type': 'Organization',
