@@ -1,21 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Source_Sans_3 } from 'next/font/google'
 import './globals.css'
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-playfair',
-  display: 'swap',
-})
-
-const sourceSans = Source_Sans_3({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-source',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.emmanuelneneodjidja.org'),
@@ -42,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Emmanuel Nene Odjidja, M&E Specialist',
-    description: 'I build evaluation systems in places where they’re hardest to build. 29 publications. 12 years across the Sahel, South Asia, and West Africa.',
+    description: 'I build evaluation systems in places where they are hardest to build. 29 publications. 12 years across the Sahel, South Asia, and West Africa.',
     images: ['/og-image.png'],
   },
   alternates: {
@@ -125,28 +109,17 @@ const personSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`dark ${playfair.variable} ${sourceSans.variable}`} suppressHydrationWarning>
+    <html lang="en">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `
-          (function(){
-            try {
-              var t = localStorage.getItem('theme');
-              if (t === 'light') {
-                document.documentElement.classList.remove('dark');
-                document.documentElement.classList.add('light');
-              }
-            } catch(e) {}
-          })();
-        `}} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
       </head>
-      <body className="min-h-dvh grain-overlay">
+      <body className="min-h-dvh">
         <a
           href="#main"
-          className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-3 focus-visible:left-3 focus-visible:z-[10000] focus-visible:bg-terra-500 focus-visible:text-cream-50 focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium"
+          className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-3 focus-visible:left-3 focus-visible:z-[10000] focus-visible:bg-ink focus-visible:text-bg focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium"
         >
           Skip to content
         </a>
