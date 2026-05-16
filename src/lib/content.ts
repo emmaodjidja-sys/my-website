@@ -221,7 +221,7 @@ export const siteContent = {
       tag: 'Bayesian',
       alt: 'Histogram of Bayesian posterior IRR for intervention, median 0.271, 95 percent CrI 0.188 to 0.383',
     },
-  ] satisfies ResearchItem[],
+  ] as ResearchItem[],
 
   editorsNote: {
     date: 'May 2026',
