@@ -182,7 +182,7 @@ export const siteContent = {
       { text: 'I run half-marathons. The full marathon remains theoretically appealing. Most of what is on this page is the long version of that sentence about evidence and pragmatism, laid out as a working index, because that is the form I trust most.', italic: true },
     ],
     currently: [
-      { html: 'Finalising <a href="/praxis">PRAXIS v1.0</a> for launch at Glocal Evaluation Week, 3 June.' },
+      { html: 'Finalising <a href="https://github.com/emmaodjidja-sys/praxis" target="_blank" rel="noopener noreferrer">PRAXIS v1.0</a> for launch at Glocal Evaluation Week, 3 June.' },
       { html: 'Co-authoring a paper on the climate, conflict, and food-insecurity nexus across Burkina Faso, Mali, and Niger.' },
       { html: 'Editing the next issue of JMDE case-based evaluations section. Open to submissions.' },
     ],
@@ -199,7 +199,7 @@ export const siteContent = {
   praxis: {
     title: 'PRAXIS',
     subtitle: 'An AI for Good lab with two research tracks: programme evaluation infrastructure and conflict early warning.',
-    url: 'https://www.emmanuelneneodjidja.org/praxis',
+    url: 'https://github.com/emmaodjidja-sys/praxis',
     github: 'https://github.com/emmaodjidja-sys/praxis',
   },
 
